@@ -700,3 +700,16 @@ the wave loop, but it does not recalibrate the cruise.
 this is a clean negative result: the gait is motor autonomous, the
 command layer is a gate, and neither the neural signature absence
 nor the rim hugging can be fixed from the command side.
+
+## command proprioception, honest negative, 2026-10-28
+
+cmd prop gain 3 mv per unit curvature on avb and ava: the calibrated
+wave is unchanged (spd 0.490, period 0.74, perim 0.94). the command
+layer is outside the wave loop. wen 2012 says b neurons are stretch
+sensitive, and the model reflects that with the command prop input,
+but the wave is produced by the motor reflex loop and the command
+neurons gate it without being part of it.
+
+this is the second independent confirmation (after the adaptation
+current) that the gait is motor autonomous. the ablation divergence
+follows: cutting the command layer removes a gate, not a pacemaker.

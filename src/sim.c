@@ -309,6 +309,15 @@ static void sensory_step(sim_t* s)
             ns->cells[s->idx_afd[i]].i_sens = THERMO_G * dt_resp;
     }
 
+    /* command proprioception, wen 2012: the command neurons track
+       the body wave. avb reads the head bend (forward phase), ava
+       reads it sign flipped (reverse phase). this puts the command
+       layer inside the wave loop instead of outside gating it */
+    if (s->idx_avb >= 0)
+        ns->cells[s->idx_avb].i_prop = CMD_PROP_GAIN * s->body.k[N_SEG / 4];
+    if (s->idx_ava >= 0)
+        ns->cells[s->idx_ava].i_prop = -CMD_PROP_GAIN * s->body.k[N_SEG / 4];
+
     /* nociception, nose contact feeds ash, an aversive reversal trigger.
        the current follows the adapting trace kept in sim_step, a
        sustained press is one fading pulse, not a held command */

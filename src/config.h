@@ -96,6 +96,10 @@ static const float ASH_TAU_MS         = 2500.0f;
    within seconds */
 static const float ADAPT_TAU_MS    = 2000.0f;
 static const float ADAPT_GAIN_MV   = 9.0f;  /* mv of adaptation per unit activity */
+/* command proprioception: the command neurons track the body wave,
+   wen 2012 shows b neurons are stretch sensitive. gain in mv per
+   unit curvature */
+static const float CMD_PROP_GAIN   = 3.0f;
 /* optogenetics, cheta and nphr kinetics after chen 2011 / zhang 2007:
    cheta activation 1.5 ms, deactivation 10 ms; nphr shunt gain in
    arbitrary conductance units at unit light intensity */
