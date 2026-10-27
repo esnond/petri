@@ -38,7 +38,9 @@ def measure(csv_path):
         if kh[i - 1] < -0.3 <= kh[i] or kh[i - 1] > 0.3 >= kh[i]:
             cross += 1
     t_on = (float(rows[on[-1]][0]) - float(rows[on[0]][0])) if on else 0.0
-    out["bend_frequency_hz"] = cross / 2.0 / t_on if t_on else 0.0
+    # minimum window: at least one expected period (~1 s), discard
+    # windows shorter than that
+    out["bend_frequency_hz"] = cross / 2.0 / t_on if t_on >= 1.0 else 0.0
     mean = sum(kh) / len(kh) if kh else 0.0
     out["curvature_amplitude_inv_mm"] = math.sqrt(
         sum((x - mean) ** 2 for x in kh) / len(kh)) if kh else 0.0

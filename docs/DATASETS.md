@@ -276,7 +276,9 @@ against male 0.304 mm/s run speed median, divergence 38 percent,
 above the 20 percent bar.
 
 registry after the second batch: five confirmed, three refuted with
-readings, one unscorable, one registered and pending its control arm.
+readings, one unscorable (p-006: frequency metric required a minimum crawl
+window, now fixed in tools/validate.py — rescore pending), one
+registered and pending its control arm.
 
 ## interpretability baseline, computed 2026-10-28
 
