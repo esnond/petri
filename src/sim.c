@@ -82,15 +82,18 @@ int sim_init(sim_t* s, const sim_opts_t* o)
         rng_t nr;
         int n = s->conn.n_syn, tries = 10 * n, done = 0;
         rng_seed(&nr, o->shuffle_seed);
-        /* double edge swap: both degrees preserved, ten attempts per
-           edge, a swap of (a,b)(c,d) to (a,d)(c,b) is taken when it
-           creates no duplicate and no self loop */
+        /* sign preserving double edge swap: chemical and gap edges are
+           shuffled within their own partitions so excitation stays
+           excitatory and inhibition stays inhibitory. both degrees
+           preserved, ten attempts per edge */
         while (tries-- > 0) {
             int e1 = (int)(rng_next(&nr) % (uint64_t)n);
             int e2 = (int)(rng_next(&nr) % (uint64_t)n);
             int b = s->conn.col_ind[e1], d = s->conn.col_ind[e2];
             int a_src = 0, c_src = 0, r, dup = 0;
             if (e1 == e2 || b == d)
+                continue;
+            if (s->conn.kind[e1] != s->conn.kind[e2])
                 continue;
             while (s->conn.row_ptr[a_src + 1] <= e1) a_src++;
             while (s->conn.row_ptr[c_src + 1] <= e2) c_src++;
