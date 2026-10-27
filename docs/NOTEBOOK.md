@@ -682,3 +682,21 @@ the ten seed ensemble confirms the four fragile constants (prop gain,
 prop tau, bend gain, drag ratio, all 0.00x to 0.39x of control) and
 the four stable ones (0.83x to 1.25x). the fragility classes from the
 two seed pass hold.
+
+## adaptation current, command pool only, 2026-10-28
+
+spike frequency adaptation added: the cell hyperpolarizes with its
+own activity (tau 2 s, gain 9 mv per unit activity), restricted to
+the command pool (nt_command). universal neuron biology, kato 2015
+lineage: the ava transient rises and decays within a reversal.
+
+result: the calibrated wave is unchanged. the motor reflex loop
+produces the gait without the command layer in the loop, confirming
+the independence the ablation table already showed. the adaptation
+will matter for the transient responses (wall escape, tap response)
+and for the burst dynamics if the command layer is ever wired into
+the wave loop, but it does not recalibrate the cruise.
+
+this is a clean negative result: the gait is motor autonomous, the
+command layer is a gate, and neither the neural signature absence
+nor the rim hugging can be fixed from the command side.

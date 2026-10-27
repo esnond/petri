@@ -84,10 +84,14 @@ void nervous_step(nervous_t* ns, float dt, float tau_mod, rng_t* rng)
     int i;
     for (i = 0; i < ns->n; i++) {
         neuron_t* c = &ns->cells[i];
-        /* spike frequency adaptation: the cell hyperpolarizes with its
-           own activity and recovers on its own clock. this is what
-           makes a command burst transient instead of a held plateau */
-        c->i_adapt += dt / ADAPT_TAU_MS * (neuron_act(c) * ADAPT_GAIN_MV - c->i_adapt);
+        /* spike frequency adaptation, command pool only: kato 2015
+           shows the ava transient rises and decays within a reversal.
+           the cell hyperpolarizes with its own activity and recovers
+           on its own clock, which makes a command burst transient
+           instead of a held plateau. motor neurons keep their graded
+           tone, the wave needs it */
+        if (c->type == NT_COMMAND)
+            c->i_adapt += dt / ADAPT_TAU_MS * (neuron_act(c) * ADAPT_GAIN_MV - c->i_adapt);
         float noise = NOISE_SD_MV * c->noise_scale * sqrtf(dt);
         float tau, i_tot;
         if (c->ablated) {
