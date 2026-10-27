@@ -1,5 +1,15 @@
 # process
 
+## development process rules
+
+behavior fixes happen by coupling or constants, never by a rule.
+same seed plus same flags equals bitwise identical output, verified
+by cmp before committing sim loop changes. csv headers are frozen in
+the schemas section below. every claim is a csv plus a seed.
+limitations only grow. new ideas go to the defects register.
+
+# process
+
 how the project is run: the author exam, the frozen schemas, the skill audit, the release checks.
 
 
