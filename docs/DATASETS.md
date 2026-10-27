@@ -277,3 +277,22 @@ above the 20 percent bar.
 
 registry after the second batch: five confirmed, three refuted with
 readings, one unscorable, one registered and pending its control arm.
+
+## interpretability baseline, computed 2026-10-28
+
+mean pairwise membrane correlation inside the annotated circuits
+(60 s seed 1, 10 ms cadence) against random same size neuron groups,
+30 resamples:
+
+| circuit | nodes | mean pairwise corr | shuffled baseline | verdict |
+|---|---|---|---|---|
+| reversal_command | 10 | +0.015 | +0.002 | above chance |
+| forward_command | 4 | +0.022 | +0.002 | above chance |
+| tap_habituation_path | 8 | +0.066 | +0.002 | above chance |
+| chemotaxis_path | 10 | -0.008 | +0.002 | at chance |
+
+reading: three of the four annotated circuits carry above chance
+shared dynamics, the chemotaxis path does not (consistent with the
+honest null on odor preference). this is the noise floor any
+interpretability method has to beat; the harness tasks in
+docs/DATASETS.md stay open for external methods.
