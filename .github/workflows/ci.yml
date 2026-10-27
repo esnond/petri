@@ -1,0 +1,25 @@
+# petri ci: strict build, the six test gates, a headless smoke run
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: build and test
+        run: |
+          gcc --version
+          make test || { echo "=== gate log ==="; tail -40 /tmp/build.log 2>/dev/null; exit 1; }
+      - name: keep the build log for diagnosis
+        if: failure()
+        run: |
+          make 2>&1 | tail -40 || true
+      - name: headless smoke, 30 s
+        run: |
+          ./petri --headless -d 30 --seed 1 > /tmp/smoke.csv
+          [ "$(wc -l < /tmp/smoke.csv)" -gt 100 ] || { echo "csv too short"; exit 1; }
+          grep -qi "nan\|inf" /tmp/smoke.csv && { echo "non finite"; exit 1; } || true
+      - name: cross connectome smoke
+        run: |
+          ./petri --headless --connectome herm_302.csv -d 10 --seed 1 >/dev/null 2>&1
+          ./petri --headless --connectome cook2019_male.csv -d 10 --seed 1 >/dev/null 2>&1
