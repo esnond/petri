@@ -264,3 +264,16 @@ the export path works (interp_activity.csv, adjacency, circuits,
 shuffled baseline). the scoring harnesses for tasks 1 to 3 are not
 implemented: they are consumer side, meant to run against external
 method libraries, and are registered in docs/DEFECTS.md, open defects register.
+
+## prediction registry, second held out batch, 2026-10-28
+
+petri-p-007 CONFIRMED on held out seed 101 with control arms: the ava
+cut delta is -0.061 mm/s with food and +0.401 mm/s without, the food
+state modulates the release effect exactly as registered.
+
+petri-p-009 CONFIRMED on three held out seeds: varshney 0.493 mm/s
+against male 0.304 mm/s run speed median, divergence 38 percent,
+above the 20 percent bar.
+
+registry after the second batch: five confirmed, three refuted with
+readings, one unscorable, one registered and pending its control arm.
