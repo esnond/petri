@@ -55,10 +55,10 @@ duration defaults when -d is not given: 180 s plain, 300 s per eval in
 three connectomes ship with the repo, switch with one flag:
 
     ./petri                                   builtin, 75 neurons / 295 synapses
-    ./petri --connectome varshney_full.csv    wormatlas sheet, 279 somatic neurons
-    ./petri --connectome herm_302.csv         full hermaphrodite, 302 neurons
+    ./petri --connectome data/varshney_full.csv    wormatlas sheet, 279 somatic neurons
+    ./petri --connectome data/herm_302.csv         full hermaphrodite, 302 neurons
 
-herm_302.csv comes from the openworm herm_full_edgelist (openworm/c302,
+data/herm_302.csv comes from the openworm herm_full_edgelist (openworm/c302,
 data/herm_full_edgelist.csv) and covers the complete animal: all 302 neurons
 including the pharyngeal nervous system, plus 145 muscle and pharyngeal
 muscle cells carried as passive chemical targets. 6036 synapses after
@@ -83,18 +83,18 @@ type: S / Sp / Rp / R chemical, EJ electrical, Nmj skipped (junctions are
 rebuilt from the motor map). synaptic sign comes from the optional 5th column
 (-1) or from the gabaergic presynaptic list (dd, vd, ris, rme, avl, dvb, rig).
 
-a ready converted file is included: varshney_full.csv, 279 somatic neurons,
+a ready converted file is included: data/varshney_full.csv, 279 somatic neurons,
 3092 synapses, 58 somatic motor neurons, sourced from the canonical wormatlas
 NeuronConnect sheet (openworm/c302, data/NeuronConnectFormatted.xlsx). to
 regenerate: convert that xlsx to Source,Target,Type,Weight rows, one edge per
 line, types kept as is. pharyngeal neurons are not in the wormatlas sheet,
-use herm_302.csv for the complete animal.
+use data/herm_302.csv for the complete animal.
 
 the witvliet 2021 developmental connectomes (8 em volumes, dwitvliet/nature2021,
 data/nemanode) convert with tools/convert_witvliet.py:
 
-    python3 tools/convert_witvliet.py witvliet_2020_8.json witvliet_adult.csv
-    ./petri --headless --connectome witvliet_adult.csv
+    python3 tools/convert_witvliet.py witvliet_2020_8.json data/witvliet_adult.csv
+    ./petri --headless --connectome data/witvliet_adult.csv
 
 typ 0 is chemical, typ 2 is a gap junction, one json entry aggregates the
 synapse sizes of one directed pair. limitation: in that export the ventral

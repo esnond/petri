@@ -34,7 +34,7 @@ print(",,,%.4f,%.3f,%.2f,%d,%.3f" % (m(v), sd(kh),
       (tt[-1]-tt[0])/zc if zc else 0.0, len(durs), per))
 PYEOF
 }
-for conn in varshney_full.csv herm_302.csv; do
+for conn in data/varshney_full.csv data/herm_302.csv; do
     cn=${conn%.csv}
     for s in ${ATLAS_SEEDS:-1 2 3}; do
         ./petri --headless --connectome "$conn" -d "$DUR" --seed "$s" 2>/dev/null > /tmp/atlas_ctrl.csv

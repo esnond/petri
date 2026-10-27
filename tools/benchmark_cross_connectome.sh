@@ -8,7 +8,7 @@ cd "$(dirname "$0")/.."
 make >/dev/null
 OUT=results/cross_connectome.csv
 echo "connectome,seed,speed_mm_s,bend_amp,period_s,wavelength_bl,reversal_count,perimeter_time_ratio" > "$OUT"
-for c in "varshney:varshney_full.csv" "herm302:herm_302.csv" "male:cook2019_male.csv" "witvliet:witvliet_adult.csv"; do
+for c in "varshney:data/varshney_full.csv" "herm302:data/herm_302.csv" "male:data/cook2019_male.csv" "witvliet:data/witvliet_adult.csv"; do
     name=${c%%:*}; file=${c#*:}
     for s in 1 2 3 4 5 6 7 8 9 10; do
         ./petri --headless --connectome "$file" -d 300 --seed "$s" 2>/dev/null > "results/bench_${name}_s${s}.csv"

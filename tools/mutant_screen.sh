@@ -26,7 +26,7 @@ PYEOF
 }
 for M in $MUT; do
     for S in 1 2 3; do
-        ./petri --headless --connectome varshney_full.csv -d 120 --seed $S --mutant "$M" 2>/dev/null > /tmp/mut.csv
+        ./petri --headless --connectome data/varshney_full.csv -d 120 --seed $S --mutant "$M" 2>/dev/null > /tmp/mut.csv
         echo "$M,$S,$(metric /tmp/mut.csv)" >> "$OUT"
     done
     echo "$M done"

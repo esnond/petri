@@ -34,7 +34,7 @@ cmp /tmp/det_a.csv /tmp/det_b.csv
 echo "PASS: bitwise identical runs"
 
 echo "== connectome smoke =="
-for c in "" "--connectome varshney_full.csv" "--connectome herm_302.csv"; do
+for c in "" "--connectome data/varshney_full.csv" "--connectome data/herm_302.csv"; do
     # shellcheck disable=SC2086
     ./petri --headless $c -d 5 --seed 1 --quiet >/dev/null 2>&1 || { echo "FAIL: $c"; exit 1; }
 done

@@ -9,9 +9,9 @@ make clean >/dev/null
 make >/dev/null 2>&1
 
 echo "== locomotion runs, 120 s each =="
-for c in "builtin:" "varshney:--connectome varshney_full.csv" \
-         "herm302:--connectome herm_302.csv" "witvliet:--connectome witvliet_adult.csv" \
-         "male:--connectome cook2019_male.csv"; do
+for c in "builtin:" "varshney:--connectome data/varshney_full.csv" \
+         "herm302:--connectome data/herm_302.csv" "witvliet:--connectome data/witvliet_adult.csv" \
+         "male:--connectome data/cook2019_male.csv"; do
     name=${c%%:*}
     flag=${c#*:}
     # shellcheck disable=SC2086
