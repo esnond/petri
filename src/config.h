@@ -88,6 +88,14 @@ static const float THERMO_G           = 2.5f; /* per degree c */
 static const float MEC_G            = 10.0f;
 static const float MEC_TAU_MS         = 800.0f; /* mechanoreceptor relaxation, ms */
 static const float ASH_TAU_MS         = 2500.0f;
+/* spike frequency adaptation: calcium activated potassium current,
+   universal in neurons. the cell depolarized with activity and
+   recovers on its own time constant, which makes every command burst
+   transient instead of a held plateau. rates after the shm2007 strain
+   imaging timescales, kato 2015 cell 155: the ava transient decays
+   within seconds */
+static const float ADAPT_TAU_MS    = 2000.0f;
+static const float ADAPT_GAIN_MV   = 9.0f;  /* mv of adaptation per unit activity */
 /* optogenetics, cheta and nphr kinetics after chen 2011 / zhang 2007:
    cheta activation 1.5 ms, deactivation 10 ms; nphr shunt gain in
    arbitrary conductance units at unit light intensity */

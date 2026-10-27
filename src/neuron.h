@@ -30,7 +30,8 @@ typedef struct {
     float i_bias;        /* standing endogenous current, mv */
     float act_avg;       /* slow running mean of activation, homeostasis */
     float homeo;
-    float noise_scale;       /* per neuron membrane noise multiplier */         /* multiplier on outgoing synapse weights */
+    float noise_scale;   /* per neuron membrane noise multiplier */
+    float i_adapt;       /* slow adaptation current, mv, hyperpolarizing */
     float hetero;        /* multiplier on outgoing synapse weights, aversive learning */
 } neuron_t;
 

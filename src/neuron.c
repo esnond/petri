@@ -46,6 +46,7 @@ void nervous_init(nervous_t* ns, rng_t* rng)
         c->v_rest = V_REST_MV;
         c->tau_base = 25.0f;
         c->homeo = 1.0f;
+        c->i_adapt = 0.0f;
         c->hetero = 1.0f;
         c->act_avg = 0.2f;
     }
@@ -81,9 +82,13 @@ float nervous_hist(const nervous_t* ns, int idx, int delay_steps)
 void nervous_step(nervous_t* ns, float dt, float tau_mod, rng_t* rng)
 {
     int i;
-    float noise = NOISE_SD_MV * sqrtf(dt);
     for (i = 0; i < ns->n; i++) {
         neuron_t* c = &ns->cells[i];
+        /* spike frequency adaptation: the cell hyperpolarizes with its
+           own activity and recovers on its own clock. this is what
+           makes a command burst transient instead of a held plateau */
+        c->i_adapt += dt / ADAPT_TAU_MS * (neuron_act(c) * ADAPT_GAIN_MV - c->i_adapt);
+        float noise = NOISE_SD_MV * c->noise_scale * sqrtf(dt);
         float tau, i_tot;
         if (c->ablated) {
             c->v = c->v_rest;
