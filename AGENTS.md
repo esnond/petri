@@ -13,7 +13,7 @@ identical output; verify with cmp before committing sim loop changes.
 c99, libc and libm only, warnings are errors. csv headers are frozen
 in docs/schemas.md. every published number is a csv plus a seed.
 every biological claim cites a source or is marked assumption.
-limitations only grow. new ideas go to docs/what_remains.md.
+limitations only grow. new ideas go to docs/DEFECTS.md, open defects section.
 
 registry and defects: docs/DEFECTS.md. lab notebook and validation
 channels: docs/NOTEBOOK.md. datasets: docs/DATASETS.md. process:

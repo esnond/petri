@@ -243,7 +243,7 @@ number is a csv plus a seed; ci runs the gates on every push.
 
 ## idea policy
 
-new ideas and feature proposals go to docs/what_remains.md with a
+new ideas and feature proposals go to docs/DEFECTS.md with a
 date, nowhere else. the registry is audited in docs/DEFECTS.md.
 
 ## positioning
