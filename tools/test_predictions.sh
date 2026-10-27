@@ -95,7 +95,7 @@ if cur: n+=1
 print("%d"%n)
 PYEOF
 )" >> "$OUT"
-    ./petri --headless --connectome herm_302.csv -d 120 --seed $S 2>/dev/null > /tmp/p_h.csv
+    ./petri --headless --connectome data/herm_302.csv -d 120 --seed $S 2>/dev/null > /tmp/p_h.csv
     echo "petri-p-008-herm,$S,run_speed,$(runspeed /tmp/p_h.csv)" >> "$OUT"
     echo "prediction batch seed $S done"
 done
