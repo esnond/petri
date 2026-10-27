@@ -1,0 +1,22 @@
+{
+  "reversal_command": {
+    "nodes": ["AVA", "AVD", "AVE", "RIM", "AIB"],
+    "edges_hint": "excitatory onto A classes, inhibitory onto forward pools",
+    "phenotype": "reversal events"
+  },
+  "forward_command": {
+    "nodes": ["AVB", "PVC"],
+    "edges_hint": "excitatory onto B classes, inhibitory onto A pools",
+    "phenotype": "forward run speed"
+  },
+  "tap_habituation_path": {
+    "nodes": ["ALM", "PLM", "AVM", "AVA", "AVD"],
+    "edges_hint": "mechanosensory afferents carry depressing stsp",
+    "phenotype": "reversal events per tap decay"
+  },
+  "chemotaxis_path": {
+    "nodes": ["ASE", "AWA", "AWC", "AIZ", "AIY"],
+    "edges_hint": "odor derivative drives steering",
+    "phenotype": "chemotaxis index"
+  }
+}
