@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "petri, a falsifiable test bench for connectome to behavior hypotheses in caenorhabditis elegans"
+title: "petri"
+authors:
+  - alias: esnond
+version: 1.0.0
+doi: 10.5281/zenodo.PLACEHOLDER-FILL-AT-RELEASE
+date-released: 2026-10-28
+license: MIT
+repository-code: "https://github.com/esnond/petri"
+abstract: >-
+  a whole animal simulator of caenorhabditis elegans locomotion in c99.
+  graded neuron dynamics on published connectome reconstructions
+  (wormatlas white 1986 series, openworm hermaphrodite edge list,
+  witvliet 2021 developmental volumes), a 24 segment hydrostatic body
+  with quasi static anisotropic friction, proprioceptive wave
+  generation, single neuron ablation screening and genome evolution.
+  deterministic per seed, zero dependencies beyond libc and libm.
+keywords:
+  - caenorhabditis elegans
+  - connectome
+  - locomotion
+  - neuromechanics
+  - falsifiability
