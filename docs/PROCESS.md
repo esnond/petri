@@ -358,7 +358,7 @@ is c99, deterministic, gated by tests/run_tests.sh.
 ## results, by figure
 
 1. calibration battery, 10 seeds on the bounded dish: 8 of 10 inside
-   the literature speed band (docs/calibration.md).
+   the literature speed band (docs/NOTEBOOK.md, calibration section).
 2. cross connectome, 300 s x 10 seeds x 4 reconstructions: four
    phenotypes from one body (results/cross_connectome.csv, three
    figures). varshney 0.43 mm/s rim hugging, herm302 0.44 with 5.3 s
@@ -378,7 +378,7 @@ is c99, deterministic, gated by tests/run_tests.sh.
 
 rim hugging; fragile gain constants; neural command sequence absent;
 swarm food not shared; witvliet non crawling; two seed caveats in
-robustness and atlas intervals. full register docs/what_remains.md.
+robustness and atlas intervals. full register docs/DEFECTS.md, open defects register.
 
 ## status
 

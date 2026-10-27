@@ -1,5 +1,10 @@
 # lab notebook
 
+state of the artifact, 2026-10-28: v1.0 tagged, ci green pending the
+author push, -O2 -ffp-contract=off reproducibility flags, datasets in
+data/, four connectomes, five validation channels live. the newest
+entries are at the bottom of each section.
+
 chronological record of every calibration round, validation channel and measured verdict. the newest sections are at the bottom of each part.
 
 
@@ -655,7 +660,7 @@ four of the eight head constants are fragile at +-10 percent with two
 seeds: the calibrated point sits on a ridge, not on a plateau. bend
 amplitude stays near 3.4 to 4.0 in every surviving configuration, the
 wave shape is robust, the rate is not. the sharpest sensitivity is
-prop gain: the operating point argument (docs/calibration.md round 2)
+prop gain: the operating point argument (docs/NOTEBOOK.md, calibration section round 2)
 predicts exactly this, the loop needs the motor pool inside the
 sigmoid knee and ten percent moves it out.
 

@@ -263,4 +263,4 @@ grouping)? baseline: same alignment on shuffled labels.
 the export path works (interp_activity.csv, adjacency, circuits,
 shuffled baseline). the scoring harnesses for tasks 1 to 3 are not
 implemented: they are consumer side, meant to run against external
-method libraries, and are registered in docs/what_remains.md.
+method libraries, and are registered in docs/DEFECTS.md, open defects register.

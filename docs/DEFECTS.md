@@ -38,10 +38,10 @@ v3 blocks: 0, 1, 2 closed and committed; 3 and 5 partially closed
 (avb checks done, atlas varshney half, mutants screen complete); 4
 and 6 open. the compute chain (null pairs, jitter ensemble, herm
 atlas half) runs in the background, resume by rerunning the three
-scripts in docs/inventory.md order. the mutant comparison table and
+scripts in docs/DEFECTS.md, registry audit order. the mutant comparison table and
 the p1 baseline numbers are the two analysis tasks left.
 
-## v2 registry state (see docs/inventory.md for the full audit)
+## v2 registry state (see docs/DEFECTS.md, registry audit for the full audit)
 
 - F1 manifest: done (tools/manifest.sh, -ffp-contract=off in build)
 - F4: done (idea policy in readme)
@@ -55,7 +55,7 @@ the p1 baseline numbers are the two analysis tasks left.
 - S8 predictions: scored on held out seeds (docs/predictions.md), 3
   confirmed, 3 refuted, 1 unscorable, 3 registered untested (p-007
   arms, p-009, p-010 runner arms not built)
-- inventory: docs/inventory.md, statuses per item with evidence
+- inventory: docs/DEFECTS.md, registry audit, statuses per item with evidence
 
 ## v3 final additions, 2026-10-28
 
@@ -91,7 +91,7 @@ the p1 baseline numbers are the two analysis tasks left.
   shared food and p6 weight deltas open
 - block 5 partial: paper draft skeleton done, tag v1.0 and the avb
   three checks open
-- resume commands in docs/inventory.md and the scripts themselves
+- resume commands in docs/DEFECTS.md, registry audit and the scripts themselves
 
 ## v2 progress since the audit, late 2026-10-27
 
@@ -217,14 +217,14 @@ criterion not demonstrably met downgrades to partial.
 | C1 | modular c99, libc+libm+posix only | done | per-file cc -std=c99 -pedantic -Wall -Wextra -O2 -ffp-contract=off: 0 warnings (this audit); Makefile SRC list | -ffp-contract=off not yet in Makefile CFLAGS, see F1 |
 | C2 | graded neurons, semi-implicit euler, dt 1 ms | done | src/neuron.c nervous_step (leak semi-implicit), DT_MS 1 in config.h | |
 | C3 | csr connectome, 4 csv imports, gap dedup, signs | done | src/connectome.c conn_load_csv (gap dedup, %11 fields), all four files load (make test smoke), male added | |
-| C4 | proprioceptive traveling wave | partial | wave spans 0.67 body length (kymograph, docs/calibration.md round 7), but seed 1 head-tail lag correlation reads 0.00 in the quick audit: the posterior quarter is quiet | tail recruitment; corr criterion unmet as stated |
+| C4 | proprioceptive traveling wave | partial | wave spans 0.67 body length (kymograph, docs/NOTEBOOK.md, calibration section round 7), but seed 1 head-tail lag correlation reads 0.00 in the quick audit: the posterior quarter is quiet | tail recruitment; corr criterion unmet as stated |
 | C5 | modulators as gain/tau only | done | src/modulators.c, sim.c g_ser/g_ser_sens/tau_mod; sign audit found no behavioral if | |
 | C6 | stsp, homeostatic scaling, hetero | done | src/plasticity.c hetero rule; src/sim.c synaptic_currents stsp u/x; neuron.c homeo multiplier | citations are in comments, thin but present |
 | C7 | headless csv 10 Hz frozen | done | docs/schemas.md + tests csv freeze gate | |
 | C8 | evolution, path/net fitness | done | src/evolution.c, -n flag, usage text | |
 | C9 | ablate screen ratios | done | results/ablation_screen.csv header neuron,type,spd_ratio,bend_ratio,rev_count,ci | |
 | C10 | interactive dashboard | done | src/tui.c, pty-verified renders, keys q/p/t/f/+/-, nonblocking drain | real-tty confirmation is user side |
-| C11 | calibration and validation docs | done | docs/calibration.md rounds 1-7, docs/validation.md 5/5 with sources | |
+| C11 | calibration and validation docs | done | docs/NOTEBOOK.md, calibration section rounds 1-7, docs/NOTEBOOK.md, validation section 5/5 with sources | |
 | C12 | make test invariants | done | tests/run_tests.sh: nan, ubsan, determinism, csv freeze, clipping, standing bend | |
 
 ## trust foundation, tier 0
@@ -234,7 +234,7 @@ criterion not demonstrably met downgrades to partial.
 | F1 | reproducibility manifest | done | tools/manifest.sh exists and writes sha256 per csv; -ffp-contract=off in Makefile line 5; run_all.sh emits results/manifest.txt | |
 | F2 | author notes, 10 answers | done | docs/author-notes.md 10 answers; the author waived the exam on 2026-10-28 (recorded decision, gate cleared by the owner) | the author may run the exam later at will |
 | F3 | schemas frozen before runs | done | docs/schemas.md; atlas ci_chemo dropped before first sweep | |
-| F4 | what_remains as the only idea queue | partial | docs/what_remains.md exists | the rule is not stated in readme |
+| F4 | what_remains as the only idea queue | partial | docs/DEFECTS.md, open defects register exists | the rule is not stated in readme |
 | S11 | null model, degree preserving shuffle | done | no --shuffle-connectome | flag + docs/null_model.md verdict |
 | S12 | +-10 percent jitter robustness | done | no jitter sweep | sweep script + docs/robustness.md |
 

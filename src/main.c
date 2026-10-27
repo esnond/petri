@@ -41,7 +41,7 @@ static void usage(FILE* out)
 "  petri --headless -d 60 -s 7  same worm, different noise realization\n"
 "\n"
 "%sWHAT THE WORM SEES%s\n"
-"  -c, --connectome F     wiring dataset: varshney_full, herm_302,\n"
+"  -c, --connectome F     wiring dataset: varshney_full, herm_302, (in data/),\n"
 "                         cook2019_male, witvliet_adult, or builtin\n"
 "  -F, --no-food          empty dish\n"
 "  -G, --thermo           thermal gradient\n"
