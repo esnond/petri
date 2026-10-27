@@ -15,5 +15,6 @@ in docs/schemas.md. every published number is a csv plus a seed.
 every biological claim cites a source or is marked assumption.
 limitations only grow. new ideas go to docs/what_remains.md.
 
-registry state: docs/inventory.md. open defects: docs/what_remains.md.
-lab notebook: docs/. release state: docs/POST_RELEASE.md.
+registry and defects: docs/DEFECTS.md. lab notebook and validation
+channels: docs/NOTEBOOK.md. datasets: docs/DATASETS.md. process:
+docs/PROCESS.md.
