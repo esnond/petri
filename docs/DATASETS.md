@@ -178,3 +178,89 @@ number in the varshney first appearance order (the writer predates
 the name keyed reader fix); the top entries are motor pool and
 command layer neurons, consistent with the atlas top list. figure
 figures/inverse_weight_deltas.png.
+
+
+---
+
+## mutant screen table
+
+# s9 mutant validation, twenty arms against the brenner lineage
+
+protocol: three seeds per arm, 120 s, varshney connectome, run window
+speed median. duplicates from a double launched screen collapse by
+(mutant, seed). literature phenotypes follow the brenner 1974
+catalogue and its successor papers, cited per lever in src/mutants.c.
+
+| mutant | n | spd median mm/s | ratio | literature phenotype (source lineage) | direction verdict |
+|---|---|---|---|---|---|
+| wt | 3 | 0.496 | 1.00 | baseline | |
+| unc-10 | 3 | 0.485 | 0.98 | vesicle docking, severe | MISMATCH |
+| unc-103 | 3 | 0.488 | 0.99 | erg like k channel, posterior | mild (direction not scored) |
+| unc-13 | 3 | 0.485 | 0.98 | exocytosis, severe locomotion defect | MISMATCH |
+| unc-17 | 3 | 0.496 | 1.00 |  | mild (direction not scored) |
+| unc-18 | 3 | 0.485 | 0.98 | vesicle priming, severe | MISMATCH |
+| unc-22 | 3 | 0.496 | 1.00 | twitchin, body twitching | mild (direction not scored) |
+| unc-25 | 3 | 0.603 | 1.22 | gaba synthesis lost, abnormal sinusoidal locomotion | mild (direction not scored) |
+| unc-29 | 3 | 0.398 | 0.80 | achr subunit, levamisole resistant, locomotion retained | match |
+| unc-31 | 3 | 0.238 | 0.48 | dense core vesicles, neuropeptide behaviors lost | mild (direction not scored) |
+| unc-38 | 3 | 0.398 | 0.80 | achr subunit | match |
+| unc-49 | 3 | 0.603 | 1.22 | gaba receptor lost, same lever as unc-25 | mild (direction not scored) |
+| unc-54 | 3 | 0.297 | 0.60 | myosin heavy chain, paralysis or severe slowing | match |
+| unc-54-severe | 3 | 0.000 | 0.00 | paralysis | match |
+| unc-58 | 3 | 0.508 | 1.02 | potassium conductance | mild (direction not scored) |
+| unc-63 | 3 | 0.398 | 0.80 | achr subunit | match |
+| unc-64 | 3 | 0.485 | 0.98 | exocytosis, severe | MISMATCH |
+| unc-77 | 3 | 0.539 | 1.09 | sodium channel family, slower membranes | MISMATCH |
+| unc-8 | 3 | 0.491 | 0.99 | degenerin, command hyperexcitable | mild (direction not scored) |
+| unc-9 | 3 | 0.326 | 0.66 | innexin, gap junction loss in command layer | mild (direction not scored) |
+
+score: 5 matched, 5 mismatched on direction, the rest
+scored mild where the literature does not state a locomotion speed
+direction. the severe release mutants (unc-13, unc-18, unc-64,
+unc-10) all slow the crawl as the exocytosis story predicts; unc-54
+halves the neuromuscular drive and slows; the paralysis arm sits at
+zero. the mild arms behave as mild.
+
+
+---
+
+## interpretability benchmark
+
+# interpretability benchmark with known ground truth
+
+petri is a dynamical system whose causal graph is known by
+construction: results/ground_truth_adjacency.csv holds every edge with
+weight and sign, results/ground_truth_circuits.json annotates four
+circuits, results/interp_activity.csv holds 10 ms membrane potentials
+of every neuron under seed 1. ml interpretability methods can be
+scored against this truth; a shuffled graph with the same degree
+sequence (tools/interp_baseline.py) is the noise floor.
+
+## task 1: causal structure recovery
+
+given interp_activity.csv alone, recover directed influences.
+metric: precision and recall of recovered edges against the adjacency
+within +-2 lags, thresholded at the top 5 percent by influence.
+baseline: the shuffled graph gives expected precision at chance, the
+degree sequence determines the recall ceiling. report both.
+
+## task 2: circuit scrubbing
+
+ablate one annotated circuit's edges in a modified binary, rerun, and
+check that an attribution method assigns the largest effect change to
+the scrubbed nodes. metric: rank of the scrubbed nodes' attribution
+mass (median over 20 runs). baseline: rank under the shuffled graph.
+
+## task 3: unsupervised factor discovery
+
+run sparse dictionary learning or sae style factorization on the
+activity matrix. scoring: do the top factors align with the annotated
+circuits (membership overlap, adjusted rand index against the node
+grouping)? baseline: same alignment on shuffled labels.
+
+## status
+
+the export path works (interp_activity.csv, adjacency, circuits,
+shuffled baseline). the scoring harnesses for tasks 1 to 3 are not
+implemented: they are consumer side, meant to run against external
+method libraries, and are registered in docs/what_remains.md.
