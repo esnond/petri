@@ -16,3 +16,5 @@ results/det_*.csv
 results/traces_gcamp_s*.csv
 test
 .agents/
+results/interp_activity.csv
+results/traces_gcamp.csv

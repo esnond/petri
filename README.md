@@ -241,6 +241,15 @@ benchmark (300 s x 10 seeds x 4 datasets, about an hour) is
 results/cross_connectome.csv with three figures. every published
 number is a csv plus a seed; ci runs the gates on every push.
 
+## development constitution
+
+behavior emerges only from sensory currents, weights, intrinsic
+dynamics, modulators, mechanics, proprioception and noise. no
+behavioral rules, no state machines, no gradient vectors. a broken
+phenotype is fixed by coupling or constants, never by a rule. same
+seed plus same flags equals bitwise identical output. csv headers are
+frozen. every claim is a csv plus a seed. limitations only grow.
+
 ## idea policy
 
 new ideas and feature proposals go to docs/DEFECTS.md with a
