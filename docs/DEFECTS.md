@@ -24,6 +24,34 @@ credit and the full text stay in the issue and in the fork
 (neuromax-cognitive/petri, commit 1268065). encouraged to develop it
 there; happy to cross link if it ships.
 
+## external report, 2026-10-28 (proteus r0, esnond/proteus commit e38df49)
+
+two findings from the proteus bridge, which drives the engine through
+its public state. neither is fixed here, the engine calibration is a
+published artifact.
+
+1. phantom nociceptive pulse at step one. body_init leaves the body
+   skeleton zeroed, so the first world step sees the head at (0,0),
+   inside the wall contact band. the contact edge fires ash and
+   mec_trace, the worm enters the session with a burned stsp vesicle
+   pool and a two second aversive tail. proposed treatment: prime the
+   contact edge detectors (prev_contact, prev_nose_contact) to the body
+   state before the first world step, or initialize the body skeleton
+   in body_init. proteus primes the detectors locally in its bridge
+   (src/bridge.c), no engine change.
+
+2. noise_scale defaults to zero. nervous_init zeroes the per neuron
+   membrane noise multiplier and nothing in the wild type path sets it,
+   so every seed produces the same trajectory and the rng reaches the
+   sim only through the 0.1 deg world temperature field (afd). this is
+   not a defect but a design decision that should be stated in the
+   readme: batch determinism does not depend on the seed for behavior,
+   only for the thermal micro field. proteus raises the multiplier at
+   runtime (assumption documented in its readme limitations).
+
+verdict: both records accepted as engine documentation, no calibration
+change. the proteus side keeps its workarounds local to its bridge.
+
 ## roadmap visibility decision, 2026-10-28
 
 the forward looking roadmap (v1.1 science lane, v2.0 mechanism lane)
