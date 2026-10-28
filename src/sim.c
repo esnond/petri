@@ -486,6 +486,27 @@ void sim_step(sim_t* s)
     world_step(&s->world, &s->body, dt);
     sensory_step(s);
     body_proprioception(&s->body, ns);
+    {
+    int i;
+    /* avb modulates stretch reflex gain for motor neurons: high avb
+       activity keeps the reflex at full gain, low avb reduces it.
+       this puts the command layer inside the wave loop as a gain
+       modulator rather than a wave generator (wen 2012: command
+       neurons modulate, motor neurons generate) */
+    {
+        float avb_mod = 1.0f;
+        if (s->idx_avb >= 0) {
+            float avb_act = neuron_act(&ns->cells[s->idx_avb]);
+            avb_mod = 0.4f + 0.6f * avb_act;
+        }
+        for (i = 0; i < ns->n; i++) {
+            const char* nm = ns->cells[i].name;
+            if (strncmp(nm, "DB", 2) == 0 || strncmp(nm, "VB", 2) == 0 ||
+                strncmp(nm, "DA", 2) == 0 || strncmp(nm, "VA", 2) == 0)
+                ns->cells[i].i_prop *= avb_mod;
+        }
+    }
+    }
     synaptic_currents(s, dt);
     plasticity_step(&s->conn, ns, &s->mod, dt);
     if (!s->mod_frozen)
