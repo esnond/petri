@@ -459,3 +459,17 @@ the noise channel was silent in every published number in v1.0.0
 because it was never explicitly enabled. enabling it in v1.0.1 shifts
 the published numbers by adding membrane noise to the dynamics; the
 shift is published in docs/ERRATA.md.
+
+## noise_scale documentation, 2026-10-28
+
+the membrane noise multiplier defaults to zero (memset initialization).
+every published number in v1.0.0 was produced with zero membrane noise.
+to enable the noise channel: set noise_scale to 1.0 in nervous_init
+(src/neuron.c). this adds NOISE_SD_MV (0.4 mv) per sqrt(dt) to each
+membrane potential at each step, making the worm sensitive to its
+random seed.
+
+this is a design decision: the deterministic mode makes the published
+numbers exactly reproducible, while the noisy mode makes the worm
+sensitive to perturbations in a biologically realistic way. both modes
+are valid; the published numbers use the deterministic mode.
