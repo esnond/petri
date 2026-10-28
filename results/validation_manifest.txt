@@ -1,0 +1,105 @@
+# petri validation manifest, 2026-10-28T19:21:33Z
+commit: 01c271335fda35e29ba6932caf941cd6fd8d1ac2
+compiler: cc (Debian 14.2.0-19) 14.2.0
+flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
+
+## binary
+ petri: 5c5e92b60acfb912addcaf907d212313d7a80b9f745991f968eb36cb307bebc7
+
+## datasets
+ data/cook2019_male.csv: f4a31a26655b80fa3ae980c2df55f00bfa2c6fa419d61f02fe5c35bf697f2bf3
+ data/herm_302.csv: 97909f25ee635469679633fdaab0cbaa71ab70fad87af3e4a2df584760bc8bf4
+ data/varshney_full.csv: 7aa6fadac02e4ede81e9070f65884bf9fbee0e3cfc0a3f34f2214c1a0006a347
+ data/witvliet_adult.csv: 5c181a4820dd8f7941c08baa83ee3a694f092f8246a1f6cc2e5a4cf647965f9f
+ data/neuron_list.txt: 6e46b3b63a09d73d11fb031903df8a698fea5e71a60bf7b72ceffa7f6fc87408
+
+## results
+ results/ablation_screen.csv: dd6c0b44b09834ed1f3bbe88cf3e9c02fcff6d6c7a8808e8227391a1d036e646 (98 lines)
+ results/atlas.csv: 58747219d3cd212c041deef81b69ec7a66dab3f006cf85fa04a041cd7d46acb2 (4306 lines)
+ results/atlas_reduced.csv: 1b92dcc589964fa2a91bce8b7403ff487617acbabbf0e917d9e38ceb7b7ec737 (944 lines)
+ results/bench_herm302_s1.csv: 5bb9aad7a3f694e4bff20d9f2ec83a2d63ba95d7c5cb642c97d0646d4beafdf7 (3001 lines)
+ results/bench_herm302_s10.csv: 1554a50aa18ee29926cb58b470736cca16f28860301abc206dda7f15de6ef802 (3001 lines)
+ results/bench_herm302_s2.csv: 4f189e2b0db19317cd77ec6c6f45a0b587f04aca50cb902a20da95d2263aa297 (3001 lines)
+ results/bench_herm302_s3.csv: df6b02e594efd746cdac1be2247244b5ca18b5b4d8c643087c25c3dd057cb91f (3001 lines)
+ results/bench_herm302_s4.csv: a8e75c200eb281c295c481c46bbcef320af54b30b8b358fcf49a1bef0cb0336a (3001 lines)
+ results/bench_herm302_s5.csv: f6043b2a9f30bc9ccfc0d2ef4dd00c17161f4e04ca1a15cbab81bcdf55910713 (3001 lines)
+ results/bench_herm302_s6.csv: de2406dcd6f0357a906ccc194fdaa98614c78ec5ae98666bbb2686624feefaa7 (3001 lines)
+ results/bench_herm302_s7.csv: 1a479744fb1e4762878b4fcd0cac9b99be3241a2d57f259eb1c6539513bdba16 (3001 lines)
+ results/bench_herm302_s8.csv: 7af473dd04aa4d8d9d4bc29fd6480ea375c120251658786b758767d5a3ebdc87 (3001 lines)
+ results/bench_herm302_s9.csv: 9642d17bfcaef7ac42e0be6c9c29c7ff922474123ca393f88485ec6a577847fb (3001 lines)
+ results/bench_male_s1.csv: e1b58b1e417fca36b150668a2cba2bc139afbfe32d9f8ba4f383b104f66baeb8 (3001 lines)
+ results/bench_male_s10.csv: 606adf0e7c0f9df0396d506446af82a469a97ee848af82504a0db6e22d7bb6c7 (3001 lines)
+ results/bench_male_s2.csv: fa5e9529e3ef163dadccb0c4ede03259fa06aa915ede6b6f482826122bfe7a22 (3001 lines)
+ results/bench_male_s3.csv: 72637c84a1e1b1d6669d6dfa74a5daf5aa1fb92f17beb605757b346033faf100 (3001 lines)
+ results/bench_male_s4.csv: a898f1ebc8bfd3b97a7fe47ef501cb16d9ab70c494f91fa5642984c127828eec (3001 lines)
+ results/bench_male_s5.csv: bc85b2daea5daf8043b0ec6216bbb976a25f7c3341edfa83485f9051aa5f71a1 (3001 lines)
+ results/bench_male_s6.csv: f4b228a976aa95c04aa8abab843ee1be776a66fd38bee9e2691013b95ef005fe (3001 lines)
+ results/bench_male_s7.csv: e9cb913c7ec2c6b4cda060466035f871d1e5ef66705c6b0cf471007d9dc4dbd9 (3001 lines)
+ results/bench_male_s8.csv: 611a2271209feed4bacd58cbb3bbff9410eebf16d9b31080dd4fb96c5d1d5d2e (3001 lines)
+ results/bench_male_s9.csv: a45a5d15e6b5de7ae06f076fcdd6fba315a0c319663dfb64a4febc80458de33e (3001 lines)
+ results/bench_varshney_s1.csv: bbb5a110d6bbe837161993c06dff3be93270f68d59d991eb0061438e971c2c7d (3001 lines)
+ results/bench_varshney_s10.csv: f03c53b1eb1dc29e5ba2ff401aef90fcfb3b143eb7c99155230e937672c782eb (3001 lines)
+ results/bench_varshney_s2.csv: 8f41b7c37b077d60bb66476e20e8a513c2ca6ca57381547029a2e8b564f86c39 (3001 lines)
+ results/bench_varshney_s3.csv: 74036fe01dc13cfdfa0b094f6fc072bb82066dcb7a7c1174dbb8a8089a0fa29b (3001 lines)
+ results/bench_varshney_s4.csv: f859ac99221ac1be333449ddfe4429de0b564029ed2798769b905e16f21a4c4a (3001 lines)
+ results/bench_varshney_s5.csv: ce8fb71fa4f2c066d36d8b06dc33f3cbbc3311e61a2c075554d2e4d0f54d8131 (3001 lines)
+ results/bench_varshney_s6.csv: 0d0c56cfd0131398e5f38e2a29b6d34b60ff2f0b1d04425e667a3f326e26b144 (3001 lines)
+ results/bench_varshney_s7.csv: 0f797dbe0515cdfabc480eec93511bc1d255b37b2a2d9e54ebfe684ef64edba0 (3001 lines)
+ results/bench_varshney_s8.csv: 12d5252ff7d1be200af05cf7b33d691a931a8b6f2bac5db2b3e115cafe2bab4b (3001 lines)
+ results/bench_varshney_s9.csv: 94835a8865697f8ea484ee777297f11eee8812c2a8888109b736b9614106b167 (3001 lines)
+ results/bench_witvliet_s1.csv: c9613da23133605b991c2003b392c56bbaeaae4ec9f2bc0ef02f89bf9b1f2320 (3001 lines)
+ results/bench_witvliet_s10.csv: 57b44b5e74c4134239359171f03b2c1caba06e7915ba7feac42334727b4da523 (3001 lines)
+ results/bench_witvliet_s2.csv: c060a27a36e2573ab05f5a10560f249954bdb48ab27025d023b4bd137bdbda99 (3001 lines)
+ results/bench_witvliet_s3.csv: 0bda36cee834192fa9298db0e67135edb13fd8ab3a8506eeb3f5dc725fea883d (3001 lines)
+ results/bench_witvliet_s4.csv: 9e9dd3961daad6be5bad8f3a51b16f83f4bce0a1968df87455a652146fae5db5 (3001 lines)
+ results/bench_witvliet_s5.csv: f66b64a9e2530dc2b10326e927cf8126f414935e51403aa877f667467c623edb (3001 lines)
+ results/bench_witvliet_s6.csv: ed8de4ea2418d9eba1a5f19244412b72f9e4bd56fd09e8e079aa005afcf9221c (3001 lines)
+ results/bench_witvliet_s7.csv: 683bdcc3d73ac6b9cda6efa6d2d7424d26dc699bb08945378b9a15b2f8b83753 (3001 lines)
+ results/bench_witvliet_s8.csv: 7208c1a51650d8414e715679fee68880fb268fdd27567a8b98270f9de7b343ec (3001 lines)
+ results/bench_witvliet_s9.csv: 76db21810f8e51d3ef9e4e6f6c34b6db82961d2dd5c6d6b56054183514f1a9b2 (3001 lines)
+ results/builtin_s1.csv: c22ae22bc6a4a2a63e3654af58a51c9524d775f738c39bfb89b8f370387d7855 (1201 lines)
+ results/cond_control_1.csv: a85c47a9c59b36b77f48f5efea37bb58c600fc3df5f7e8df3885feed541e24f3 (3001 lines)
+ results/cond_control_101.csv: 4c5b09efaca5d13969144db442e480b1bc9e8ba26243fa2a79c9e0555e280bba (3001 lines)
+ results/cond_paired_1.csv: e9ee022fdfd9745553734f6ef3725f95305f768b28e301ac6b9483fc03502647 (3001 lines)
+ results/cond_paired_101.csv: eb8b1cf4c71506cab39a5e29111c5f8e0db908290ac70fc3c3c60e52cb2bb347 (3001 lines)
+ results/cross_connectome.csv: bd25dd05f505e466a98f975f2f297f90f46023afcd62e968e7d9ad31a7d4a033 (44 lines)
+ results/det_a.csv: 8a792a033a5063e39aed59fbc1523345e7cfb9c2c2cc4afb03f350f34cc1b4d9 (301 lines)
+ results/det_b.csv: 8a792a033a5063e39aed59fbc1523345e7cfb9c2c2cc4afb03f350f34cc1b4d9 (301 lines)
+ results/ground_truth_adjacency.csv: e3bb87d302255eeb5acc8aa49d45bfa886136f0c2facabdf23da05181a83d0ee (470 lines)
+ results/ground_truth_shuffled.csv: 2e32f2d1f84071dfad1849008743bc34a0ba73c80dac0d6e7837dc73f64f3f3c (98 lines)
+ results/herm302_s1.csv: 44fb2362cbdc0d054e7fe6402cc75852b438b0e38887c633b214a050e276ad5f (1201 lines)
+ results/interp_activity.csv: c4a9e5470c69723d4b468ffe1e845c81fd032f8752710a8b858a513d90599e08 (3002 lines)
+ results/inverse_best_gen00.csv: 136398c72d94e1bbec4089add9aa5bc6ee33413665545b94e7d2d0268a704d77 (601 lines)
+ results/inverse_best_gen05.csv: e580052f3222d995a8d051dd57734facb7ff56136152b9dc30b176f2ce5c25d0 (601 lines)
+ results/inverse_best_gen10.csv: 1e434095c0b957e0382e66f952f08ac75d6a904640e1ca9d00592b9bab3362d8 (601 lines)
+ results/inverse_best_gen15.csv: b9b275b02953bd380f65a8c8771392b266a68960fcba4a4622bed578a3ef1bb0 (601 lines)
+ results/inverse_best_gen20.csv: 84b694159cc2d48752c513b6f0694e19eaacba87d2fcced7c4026d2bd26ea7ed (601 lines)
+ results/jitter_ensemble.csv: 18a8f41915b58639d507e6c1efeb409be29869ba69b95e80335e39c3f2d914e0 (169 lines)
+ results/male_s1.csv: b21ce28cbf07ca6620d1415021e1c70a646197afadad1833fac685e8c5617c3f (1201 lines)
+ results/mutants.csv: 12371f46d452846c627d9e3cc5c0d3ba381673b468b9c7816bfd85c0b73b70ca (129 lines)
+ results/null_model.csv: 5594045fb9576f3e6261408b1663634e91c853431a86eee9bd475b58ae26c00e (29 lines)
+ results/opto_aib.csv: 8e7abca263bbd49b7db5e545d77d1f760beb19f5a3773254644680a139a31478 (1201 lines)
+ results/opto_ava.csv: 8e7abca263bbd49b7db5e545d77d1f760beb19f5a3773254644680a139a31478 (1201 lines)
+ results/opto_avb.csv: 8e7abca263bbd49b7db5e545d77d1f760beb19f5a3773254644680a139a31478 (1201 lines)
+ results/p010_swarm_101.csv: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (0 lines)
+ results/p010_swarm_102.csv: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (0 lines)
+ results/predictions_heldout.csv: 7e28c770452f8303b93b74ce63ee8886b2c6ac5ac87d5b61d5ee1fd3f01360a7 (261 lines)
+ results/robustness.csv: 3e1088b68751fb236ee8fe945e3e5a3e6025a190530657a73da42758d3e07909 (33 lines)
+ results/summary.csv: dba683c9dc5de7703ee78328b4da8656970617b2b8bb72e0480b930c61deff17 (6 lines)
+ results/swarm_pos.csv: 46861cff8cf4f1fdbba562f38f8da027fd3d42bfb55b91c76efb2bfd441b092d (36001 lines)
+ results/swarm_pos_food.csv: dc962fb8a1100c6d589518fec48f7e315f0daff8c051743ebeb16ab68d7b5347 (72001 lines)
+ results/swarm_pos_nofood.csv: e76f4f1f253bf3a2dd60d4273403910a35866144f75f0e8b7de81d497096c6fe (72001 lines)
+ results/tap_train.csv: 0fde4da09fe1530924c1103dfb5ca507bb160c5bf96d454c94e23187292ffb69 (601 lines)
+ results/traces_gcamp.csv: f91abf6d457071e58c2e3785954be546b58dafe2ec66cfa291ed135538de9f09 (12001 lines)
+ results/traces_gcamp_s3.csv: a418f01fae5d170548b1c0fedd008b0a0a94249c1054f8bb726aae265bf4fe02 (18001 lines)
+ results/traces_gcamp_s9.csv: f696f1942f1ff4f68c8a927f39edacb4ef413e0e24a5484cad8e733e1984466f (18001 lines)
+ results/varshney_s1.csv: 57cfd0face660ddf76788e04c2db47791ecf553823a0a9f42ba94db76745c997 (1201 lines)
+ results/witvliet_s1.csv: fd8e35f0af0233d1bbd6d7482e018ffd38e60ad0354b0d46da14ad53aedf5a6e (1201 lines)
+ results/manifest.txt: 7c5261119e11ab1969b3c5576390bdfb368346120ae3b085535d366d3b8dd8a1 (87 lines)
+ results/validation_manifest.txt: a6ecee701dd5aad96183a24a99494c8355980a9e2560dff215824245b6462029 (98 lines)
+
+## figures
+ figures/inverse_progress.png: ced902dd31dd8e9584b6f7f9469d35851cd5f3082b0864f00f999fd51112be57
+ figures/inverse_weight_deltas.png: fe4c46b366d52defb8a122ae8dc7e041d165a4fb4bbc7b675c52316bd8d89323
+ figures/learning_curve.png: 0e857243e653b7dd5717529082f254cc9a8f7ef8619bd56fc55248e76a135260
+ figures/proprio_sweep.png: 8f4498cec72bf1024c06882e0fffc714dfc1921da60070cca00b4cf594a47f7f
