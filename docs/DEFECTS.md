@@ -426,3 +426,36 @@ set a tone; our architecture gives them tone only.
 
 no constant was tuned to reduce this divergence. the numbers above are
 the shipped configuration (commit 5e6a1de lineage).
+
+## v1.0.1 patch defects, 2026-10-28
+
+### phantom nociceptive pulse at step zero
+
+proteus e38df49 reported: the world sees the head at origin (0,0) on
+the first step because body_t is memset to zero before body_init runs.
+the false wall contact burns the vesicular stsp pool on the first step
+of any session.
+
+petri status: body_init explicitly sets head to (6.0, 8.0) dish center
+before world_step runs, so the phantom contact does not occur in the
+standalone build. however, the edge detectors (nose_contact,
+tail_contact, contact_hint) are not primed before the first
+world_step, and a memset initialized body would trigger them on step
+zero if body_init were skipped. the priming is defensive, not a
+reproduction of the proteus bug.
+
+proteus bridge patch: not needed after this fix, the standalone
+detectors are primed.
+
+### noise_scale = 0 by default
+
+design decision, not a defect: the membrane noise multiplier is
+memset to zero and never explicitly set to one. all membrane noise is
+off by default, which means the same seed produces the same
+deterministic trajectory (modulo the world rng). documented in readme
+with the one line needed to enable it.
+
+the noise channel was silent in every published number in v1.0.0
+because it was never explicitly enabled. enabling it in v1.0.1 shifts
+the published numbers by adding membrane noise to the dynamics; the
+shift is published in docs/ERRATA.md.

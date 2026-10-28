@@ -46,6 +46,7 @@ void nervous_init(nervous_t* ns, rng_t* rng)
         c->v_rest = V_REST_MV;
         c->tau_base = 25.0f;
         c->homeo = 1.0f;
+        c->noise_scale = 1.0f;
         c->i_adapt = 0.0f;
         c->hetero = 1.0f;
         c->act_avg = 0.2f;

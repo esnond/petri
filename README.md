@@ -55,7 +55,7 @@ duration defaults when -d is not given: 180 s plain, 300 s per eval in
 three connectomes ship with the repo, switch with one flag:
 
     ./petri                                   builtin, 75 neurons / 295 synapses
-    ./petri --connectome data/data/varshney_full.csv    wormatlas sheet, 279 somatic neurons
+    ./petri --connectome data/varshney_full.csv    wormatlas sheet, 279 somatic neurons
     ./petri --connectome data/herm_302.csv         full hermaphrodite, 302 neurons
 
 data/herm_302.csv comes from the openworm herm_full_edgelist (openworm/c302,
@@ -83,7 +83,7 @@ type: S / Sp / Rp / R chemical, EJ electrical, Nmj skipped (junctions are
 rebuilt from the motor map). synaptic sign comes from the optional 5th column
 (-1) or from the gabaergic presynaptic list (dd, vd, ris, rme, avl, dvb, rig).
 
-a ready converted file is included: data/data/varshney_full.csv, 279 somatic neurons,
+a ready converted file is included: data/varshney_full.csv, 279 somatic neurons,
 3092 synapses, 58 somatic motor neurons, sourced from the canonical wormatlas
 NeuronConnect sheet (openworm/c302, data/NeuronConnectFormatted.xlsx). to
 regenerate: convert that xlsx to Source,Target,Type,Weight rows, one edge per
