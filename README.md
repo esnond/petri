@@ -221,7 +221,7 @@ mechanosensory synapses on contact. graded, no mode switches.
 
 ## project status
 
-**v1.0 released** (2026-10-28). 30 of 36 registry items done, the
+**v1.0.1 released** (2026-10-28). v1.0.1 fixes the engine initialization defect (noise_scale default, edge detector priming), errata published in docs/ERRATA.md. v1.0 remains the cited snapshot.. 30 of 36 registry items done, the
 rest documented as partial with reasons in docs/DEFECTS.md. five
 validation channels live. open defects public. see
 docs/PROCESS.md.
