@@ -1,0 +1,18 @@
+sh tests/run_tests.sh
+== build strict ==
+PASS: clean build
+== csv contract freeze ==
+PASS: csv header frozen
+== determinism ==
+PASS: bitwise identical runs
+== connectome smoke ==
+PASS: all three connectomes run
+== nan guard ==
+PASS: finite values
+== wave invariants ==
+no clipping, no frozen bend
+PASS: wave invariants
+== ubsan ==
+PASS: ubsan clean
+
+ALL TESTS GREEN
