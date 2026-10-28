@@ -48,8 +48,6 @@ static const float DOP_TAU_S      = 2.5f;    /* dopamine kinetics, s */
 static const float MOD_TAU_SCALE_SER = 0.6f; /* ser slows interneuron tau by up to this fraction */
 static const float MOD_TAU_SCALE_OCT = 0.3f;
 static const float NMJ_GAIN       = 0.6f;
-static const float NMJ_GAIN_SER    = 1.6f;   /* serotonin cuts nmj gain */
-static const float NMJ_GAIN_OCT    = 1.0f;   /* octopamine boosts nmj gain */
 static const float DA_G_MECH_SCALE = 0.5f;   /* da shunts mechanosensory synapses */
 
 /* body mechanics, units mm and ms */
