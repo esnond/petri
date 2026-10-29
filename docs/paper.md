@@ -16,6 +16,16 @@ date: 2026-10-28
 bibliography: paper.bib
 ---
 
+> **status, 2026-10-30.** numbers below are the v1.0.1 snapshot and are
+> kept for provenance. the current calibrated values live in
+> docs/ERRATA.md (v1.2): speed 0.246 +/- 0.005 mm/s, bend amplitude
+> 2.71 +/- 0.02 1/mm, period 1.31 +/- 0.20 s, perimeter ratio
+> 0.12 +/- 0.05, avb ablation 0.79 +/- 0.03x. the ablation sign
+> changed with the avb motor gate; the reconstruction divergence
+> (p-008) survived recalibration. revise against docs/DATASETS.md
+> before submission.
+
+
 # Summary
 
 petri integrates a published wiring diagram of the Caenorhabditis
