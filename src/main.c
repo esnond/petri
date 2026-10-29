@@ -174,7 +174,7 @@ int main(int argc, char** argv)
             case 'D': opts.edges_path = optarg; break;
             case 'U': opts.shuffle_seed = (uint64_t)strtoull(optarg, NULL, 10); break;
             case 'q': opts.quiet = 1; break;
-            case 'V': printf("petri 1.0\n"); return 0;
+            case 'V': printf("petri 1.2.0\n"); return 0;
             case 'h': usage(stdout); return 0;
             default: usage(stderr); return 1;
             }
