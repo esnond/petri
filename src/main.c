@@ -92,6 +92,16 @@ int main(int argc, char** argv)
     memset(&opts, 0, sizeof(opts));
     opts.duration_s = 180.0;
     opts.seed = 1;
+    /* the validated default is the full varshney wiring shipped in the
+       repo, the builtin toy network is the fallback when the data tree
+       is absent, for example a binary run outside the checkout */
+    {
+        FILE* probe = fopen("data/varshney_full.csv", "r");
+        if (probe) {
+            fclose(probe);
+            opts.connectome_path = "data/varshney_full.csv";
+        }
+    }
 
     {
         static const struct option lo[] = {

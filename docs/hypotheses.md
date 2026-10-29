@@ -110,8 +110,10 @@ command neuron activity and head curvature, ten seeds, 300 s. at the
 shipped constants avb tracks k_head at r +0.853 +/- 0.019 and ava at
 -0.665 +/- 0.019, stable across seeds. that looks like a signature.
 control: set cmd prop gain to zero, which removes the curvature input
-wired into avb and ava. avb collapses to +0.04, -0.03, +0.01 on seeds
-1, 4, 7; ava to +0.12..+0.29; aib and aiy stay near zero. the
+wired into avb and ava. avb collapses to -0.01, -0.01, +0.00 on seeds
+1, 4, 7; ava to +0.11..+0.29; aib and aiy stay near zero.
+the control was rerun at the committed constants after a harness
+leak, the numbers above are the committed configuration. the
 correlation was the imposed input, not an emergent property of the
 connectome. h3.A: no emergent temporal signature.
 

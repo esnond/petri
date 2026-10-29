@@ -764,8 +764,8 @@ load bearing. this is the honest cost of h2.E.
 neural signature, h3.A: command activity against head curvature is
 r +0.85 for avb and -0.67 for ava on ten seeds, which at first looks
 like a phase locked readout of the wave. the control kills it: with
-the command proprioception gain at zero, avb falls to 0.04 and ava to
-0.1-0.3. the correlation was the input we wired in (cmd prop gain
+the command proprioception gain at zero, avb falls to about 0.00 and
+ava to 0.1-0.3. the correlation was the input we wired in (cmd prop gain
 times the mid body curvature), not something the connectome produced.
 so the alternative temporal metric finds no emergent signature. with
 the three earlier negatives this supports h3.C.

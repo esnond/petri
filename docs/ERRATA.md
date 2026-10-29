@@ -1,3 +1,27 @@
+# errata
+
+## v1.2, 2026-10-29, locomotion recalibration
+
+v1.2 changes the default connectome and recalibrates the locomotion
+constants. published numbers move for two reasons: the default dataset
+is now varshney_full (279 neurons) instead of the builtin toy net, and
+the constants changed (prop tau 600 to 350 ms, nmj 0.9 to 0.8, drag t
+0.021 to 0.032, avb now gates the nmj output).
+
+| metric | v1.0.1 (builtin) | v1.2 (varshney, ten seeds) |
+|---|---|---|
+| speed | 0.200 mm/s | 0.246 +/- 0.005 mm/s |
+| bend amplitude | 2.13 1/mm | 2.71 +/- 0.02 1/mm |
+| period | 1.18 s | 1.31 +/- 0.20 s |
+| perimeter ratio | not reported | 0.12 +/- 0.05 |
+| avb ablation speed ratio | 1.3 to 2.3x (faster) | 0.79 +/- 0.03x (slower) |
+
+the ablation sign change is the headline: avb ablation now slows the
+worm instead of speeding it up. the mechanism is a permissive gate on
+motor output, recorded as h2.E post_hoc in docs/hypotheses.md. the
+builtin toy net is still available when data/ is absent and is not
+calibrated in v1.2.
+
 # errata, v1.0.1
 
 published 2026-10-28. this document lists every published number that

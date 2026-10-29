@@ -221,10 +221,17 @@ mechanosensory synapses on contact. graded, no mode switches.
 
 ## project status
 
-**v1.0.1 released** (2026-10-28). v1.0.1 fixes the engine initialization defect (noise_scale default, edge detector priming), errata published in docs/ERRATA.md. v1.0 remains the cited snapshot.. 30 of 36 registry items done, the
-rest documented as partial with reasons in docs/DEFECTS.md. five
-validation channels live. open defects public. see
-docs/PROCESS.md.
+**v1.2 experiment** (2026-10-29, branch v1.2-fix-branch). the default
+connectome is now the full varshney wiring shipped in data/. the
+locomotion battery sits inside the literature targets on ten seeds,
+300 s: speed 0.246 +/- 0.005 mm/s, bend amplitude 2.71 +/- 0.02 1/mm,
+period 1.31 +/- 0.20 s, perimeter ratio 0.12 +/- 0.05, avb ablation
+0.79 +/- 0.03x. nine of ten seeds clear the perimeter target (s5 at
+0.31), eight of ten the period box (s6 and s9 about 1.9 s). reproduce
+with tools/battery_v12.py. robustness and the neural signature control
+are in docs/NOTEBOOK.md, defects and resolutions in docs/DEFECTS.md.
+v1.0.1 remains the last tagged release. 30 of 36 registry items done,
+the rest documented as partial with reasons in docs/DEFECTS.md.
 
 ## reproducibility
 
