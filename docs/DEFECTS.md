@@ -463,6 +463,32 @@ slow. this is a command gate on motor output, recorded as h2.E post_hoc
 in the hypotheses file. it answers the sign but not the mechanism the
 model originally claimed: avb still does not initiate the wave.
 
+## v1.2 channel findings, 2026-10-30
+
+reruns at the v1.2 constants against results/archive_v101/.
+
+1. mutant screen degraded: score 1 matched, 1 partial, 8 mismatched
+   (was 5 and 5). the achr lever (unc-29, unc-38, unc-63, one code
+   path) speeds the crawl 1.61x, the literature says retained or
+   slower locomotion. mechanism hypothesis, not measured: halving
+   cholinergic nmj weight moves the reflex off the fast gait
+   threshold, the same operating point release that flipped the avb
+   ablation sign before the motor gate. the exocytosis arms
+   (unc-13, unc-18, unc-64, unc-10) stay at 0.98: the stsp utilization
+   knob is dead at v1.2, a lever with no purchase.
+2. prediction p-005 flipped from confirmed to refuted (2/10): the
+   no food dwell dilution effect does not reproduce. hypothesis: the
+   avb motor gate caps thrust, so removing dwell cannot raise speed.
+3. prediction p-006 extractor bug: writes the metric name period_s
+   while calling freq(), prints 8.99, no control arm. the prediction
+   stays open, the extractor needs a fix and a rerun.
+4. the varshney reversal event count reads 121.1 episodes of at least
+   0.5 s in 300 s. the count includes wall slide sign rebuilds, so it
+   is metric sensitive. before any biological reversal claim, the
+   metric needs a directional displacement floor.
+5. the head to tail wavelength metric reads 0.00 on every connectome
+   at v1.2. degenerate, under examination.
+
 ## v1.0.1 patch defects, 2026-10-28
 
 ### phantom nociceptive pulse at step zero
