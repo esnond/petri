@@ -99,7 +99,20 @@ within 16 percent across the whole scan). the 0.05 criterion conflates
 fragility with a definitional response of a limit cycle's period.
 recorded as a result, not worked around.
 
-h1.4 habituation: untested this round.
+h1.4 habituation: NOT CONFIRMED. protocol: tap every 30 s for 600 s,
+five held-out seeds (101..105), control arms without tap, response is
+seconds of backward velocity in the 10 s window after each tap onset.
+the tapped arm is flat: late minus early 4.55 minus 4.23 s, delta
++0.32 +/- 1.86 (n 5, two seeds decline, three rise). the no tap
+control rises +1.65 +/- 1.47, so the v1.2 worm generally reverses more
+late in a run and the tap does not add a declining or rising component
+on top. neither habituation nor the v1.0.1 sensitization reproduces at
+this protocol. power caveat: n 5 with a 1.86 s ci cannot resolve a
+small decline; the falsification bar of the registry is met in the
+weak sense only. hypothesis for the null: the stsp depression sits on
+sensory synapses, but the behavioral reversal readout is saturated by
+the high baseline reversal rate (121 episodes per 300 s, see the
+defect register).
 
 h3.A/B/C: see the neural signature note in the notebook.
 
