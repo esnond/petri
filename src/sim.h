@@ -85,7 +85,7 @@ typedef struct {
     int   idx_ava, idx_avb, idx_aib, idx_aiy, idx_rim;
     int   idx_ash[4]; int n_ash;
     int   idx_awc[4]; int n_awc;
-    int   idx_alplm[4]; int n_alplm;
+    int   idx_alplm[8]; int n_alplm;
     int   idx_awa[4]; int n_awa;
     int   idx_ase[4]; int n_ase;
     int   idx_afd[4]; int n_afd;
@@ -94,6 +94,7 @@ typedef struct {
     int    tap_active_ms;
     float  mec_trace;        /* decaying mechanoreceptor activation 0..1 */
     float  ash_trace;        /* adapting nociceptor activation 0..1 */
+    float  avb_slow;         /* slow avb command estimate, drives reflex gain */
     int    n_surgery;
     int    edges_dumped;        /* completed cut operations this session */
     int    surgery_cut[MAX_NEURONS];      /* per neuron: 1 when outputs cut */

@@ -47,24 +47,23 @@ static const float OCT_TAU_S      = 5.0f;    /* octopamine kinetics, s */
 static const float DOP_TAU_S      = 2.5f;    /* dopamine kinetics, s */
 static const float MOD_TAU_SCALE_SER = 0.6f; /* ser slows interneuron tau by up to this fraction */
 static const float MOD_TAU_SCALE_OCT = 0.3f;
-static const float NMJ_GAIN       = 0.45f;
-static const float NMJ_GAIN_SER    = 1.6f;   /* serotonin cuts nmj gain */
-static const float NMJ_GAIN_OCT    = 1.0f;   /* octopamine boosts nmj gain */
-static const float HEADING_NOISE_RAD_S = 0.15f; /* heading random walk from neuromuscular noise */
+static const float NMJ_GAIN        = 0.8f;
+static const float NMJ_GAIN_SER   = 1.6f;  /* serotonin nmj suppression, per unit mod */
+static const float NMJ_GAIN_OCT   = 1.0f;  /* octopamine nmj potentiation, per unit mod */
 static const float DA_G_MECH_SCALE = 0.5f;   /* da shunts mechanosensory synapses */
 
 /* body mechanics, units mm and ms */
 static const float BODY_LEN_MM    = 1.0f;    /* adult hermaphrodite, mm */
 static const float K_MAX_INV_MM   = 12.0f;   /* max curvature, 1/mm, cuticle limit */
-static const float TAU_BEND_MS    = 220.0f;  /* cuticle viscoelastic relaxation, ms, approx raised from 110 to slow the loop into the target period */
-static const float BEND_GAIN      = 7.5f;
+static const float TAU_BEND_MS     = 220.0f;  /* cuticle viscoelastic relaxation, ms, approx raised from 110 to slow the loop into the target period */
+static const float BEND_GAIN       = 8.0f;
 static const float BOUNDARY_DAMP  = 3.0f;
 static const int   BOUNDARY_SEG   = 3;
-static const float DRAG_T         = 0.021f;  /* tangential drag per segment, uN*s/mm */
+static const float DRAG_T          = 0.032f;  /* tangential drag per segment, uN*s/mm */
 static const float DRAG_RATIO     = 20.0f;
-static const float PROP_GAIN      = 25.0f;
+static const float PROP_GAIN       = 25.0f;
 static const int   PROP_LAG_SEG   = 4;       /* segments of spatial phase lag */
-static const float PROP_TAU_MS    = 600.0f;
+static const float PROP_TAU_MS     = 350.0f;
 static const float PROP_SELF_W    = 1.0f;    /* own segment bend weight, relaxation oscillator */
 static const float PROP_BACK_W    = 1.2f;
 static const float MN_CHAIN_GAP_W = 0.5f;    /* electrotonic chain weight along one motor class */
@@ -72,7 +71,7 @@ static const float MN_CHAIN_GAP_W = 0.5f;    /* electrotonic chain weight along 
 /* endogenous activity of the command circuit, mv of standing bias current.
    graded whole animal models need avb near the sigmoid midpoint or the
    proprioceptive loop has no gain to work with, kunert 2017, boyle 2012 */
-static const float BIAS_AVB_MV    = 12.00f;
+static const float BIAS_AVB_MV     = 12.0f;
 static const float BIAS_AVA_MV    = 0.0f;   /* ava is command driven, no endogenous drive */
 static const float NMJ_SIGMA_SEG  = 0.8f;    /* spatial spread of one mn onto muscle bands */
 /* per motor neuron weight normalization lives in body.c: the class
@@ -101,6 +100,8 @@ static const float ADAPT_GAIN_MV   = 9.0f;  /* mv of adaptation per unit activit
    wen 2012 shows b neurons are stretch sensitive. gain in mv per
    unit curvature */
 static const float CMD_PROP_GAIN   = 20.0f;
+static const float AVB_MOTOR_FLOOR = 0.3f; /* avb gates nmj output, 0 means ablation silences the muscles */
+static const float AVB_SLOW_TAU_MS = 5000.0f; /* avb command smoothing, decouples the gain from the fast gait */
 /* optogenetics, cheta and nphr kinetics after chen 2011 / zhang 2007:
    cheta activation 1.5 ms, deactivation 10 ms; nphr shunt gain in
    arbitrary conductance units at unit light intensity */

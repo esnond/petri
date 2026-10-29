@@ -18,3 +18,5 @@ test
 .agents/
 results/interp_activity.csv
 results/traces_gcamp.csv
+__pycache__/
+*.pyc

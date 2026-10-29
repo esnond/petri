@@ -41,7 +41,9 @@ static void collect_named(sim_t* s)
             s->idx_ase[s->n_ase++] = i;
         else if (strncmp(nm, "AFD", 3) == 0 && s->n_afd < 4)
             s->idx_afd[s->n_afd++] = i;
-        else if ((strncmp(nm, "ALM", 3) == 0 || strncmp(nm, "PLM", 3) == 0) && s->n_alplm < 4)
+        else if ((strncmp(nm, "ALM", 3) == 0 || strncmp(nm, "PLM", 3) == 0 ||
+                  strncmp(nm, "AVM", 3) == 0 || strncmp(nm, "PVM", 3) == 0) &&
+                 s->n_alplm < 8)
             s->idx_alplm[s->n_alplm++] = i;
     }
 }
@@ -333,10 +335,18 @@ static void sensory_step(sim_t* s)
         for (i = 0; i < s->n_ash; i++)
             ns->cells[s->idx_ash[i]].i_sens = MEC_G;
 
-    /* gentle mechanosensation, the receptor current follows the slow
-       relaxation trace, habituation comes from stsp at its synapses */
-    for (i = 0; i < s->n_alplm; i++)
-        ns->cells[s->idx_alplm[i]].i_sens = MEC_G * s->mec_trace;
+    /* gentle mechanosensation: anterior receptors (alm, avm) fire while the
+       nose is pressed, posterior ones (plm, pvm) while the tail is. the
+       sustained drive is the wall escape loop, a slowly adapting touch cell
+       keeps firing under constant pressure. the decay trace only carries the
+       tap stimulus, which reaches both ends */
+    for (i = 0; i < s->n_alplm; i++) {
+        const char* nm = ns->cells[s->idx_alplm[i]].name;
+        int anterior = strncmp(nm, "ALM", 3) == 0 || strncmp(nm, "AVM", 3) == 0;
+        float drive = anterior ? (s->body.nose_contact ? 1.0f : s->mec_trace)
+                               : (s->body.tail_contact ? 1.0f : s->mec_trace);
+        ns->cells[s->idx_alplm[i]].i_sens = MEC_G * drive;
+    }
 }
 
 /*
@@ -486,26 +496,15 @@ void sim_step(sim_t* s)
     world_step(&s->world, &s->body, dt);
     sensory_step(s);
     body_proprioception(&s->body, ns);
+    /* the avb command is smoothed and gates the motor output: removing avb
+       can only lower muscle drive, so ablation slows the worm. the gate is
+       applied at the neuromuscular junction below, not to the reflex, which
+       keeps the direction of the ablation effect monotonic */
     {
-    int i;
-    /* avb modulates stretch reflex gain for motor neurons: high avb
-       activity keeps the reflex at full gain, low avb reduces it.
-       this puts the command layer inside the wave loop as a gain
-       modulator rather than a wave generator (wen 2012: command
-       neurons modulate, motor neurons generate) */
-    {
-        float avb_mod = 1.0f;
-        if (s->idx_avb >= 0) {
-            float avb_act = neuron_act(&ns->cells[s->idx_avb]);
-            avb_mod = 0.4f + 0.6f * avb_act;
-        }
-        for (i = 0; i < ns->n; i++) {
-            const char* nm = ns->cells[i].name;
-            if (strncmp(nm, "DB", 2) == 0 || strncmp(nm, "VB", 2) == 0 ||
-                strncmp(nm, "DA", 2) == 0 || strncmp(nm, "VA", 2) == 0)
-                ns->cells[i].i_prop *= avb_mod;
-        }
-    }
+        float avb_act = 1.0f;
+        if (s->idx_avb >= 0)
+            avb_act = neuron_act(&ns->cells[s->idx_avb]);
+        s->avb_slow += dt / AVB_SLOW_TAU_MS * (avb_act - s->avb_slow);
     }
     synaptic_currents(s, dt);
     plasticity_step(&s->conn, ns, &s->mod, dt);
@@ -518,6 +517,7 @@ void sim_step(sim_t* s)
     if (tau_mod < 0.3f)
         tau_mod = 0.3f;
     nmj_gain = NMJ_GAIN * s->nmj_gain_scale / (1.0f + NMJ_GAIN_SER * s->mod.ser) * (1.0f + NMJ_GAIN_OCT * s->mod.oct);
+    nmj_gain *= AVB_MOTOR_FLOOR + (1.0f - AVB_MOTOR_FLOOR) * s->avb_slow;
 
     {
         /* light state: protocol events, then the closed loop zone */
