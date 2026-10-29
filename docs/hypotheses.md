@@ -102,3 +102,27 @@ recorded as a result, not worked around.
 h1.4 habituation: untested this round.
 
 h3.A/B/C: see the neural signature note in the notebook.
+
+## neural signature results, 2026-10-29
+
+h3.A metric_wrong: a temporal alternative was run, pearson r between
+command neuron activity and head curvature, ten seeds, 300 s. at the
+shipped constants avb tracks k_head at r +0.853 +/- 0.019 and ava at
+-0.665 +/- 0.019, stable across seeds. that looks like a signature.
+control: set cmd prop gain to zero, which removes the curvature input
+wired into avb and ava. avb collapses to +0.04, -0.03, +0.01 on seeds
+1, 4, 7; ava to +0.12..+0.29; aib and aiy stay near zero. the
+correlation was the imposed input, not an emergent property of the
+connectome. h3.A: no emergent temporal signature.
+
+h3.B data_short: not run at 600 s x 50. the null above is already
+stable (95 percent ci +/- 0.02 across ten seeds), so more data is
+unlikely to overturn a zero that is zero to three decimals. recorded
+as a resource bound, not a claim of exhaustiveness.
+
+h3.C genuine_absence: supported. four independent probes now agree:
+adaptation current does not change the cruise, command proprioception
+does not drive the wave, avb ablation does not kill the rhythm, and
+the only apparent temporal signature traces to a model input. the
+gait is motor autonomous and the command layer gates it. this is the
+standing conclusion of the v1.2 experiment.
