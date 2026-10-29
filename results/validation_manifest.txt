@@ -1,10 +1,10 @@
-# petri validation manifest, 2026-10-29T03:17:35Z
-commit: a9f327f218ebc57253d3e84c0f2e5dfb555ed619
+# petri validation manifest, 2026-10-29T03:19:14Z
+commit: a33a85022689badbe87b69ab7e7e85d3dcaed58b
 compiler: cc (Debian 14.2.0-19) 14.2.0
 flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
 
 ## binary
- petri: ff8990968cf04fe56b01441bf0e1f7af072162f2bf41edaf2e115dfcc212e789
+ petri: ce9cbaee0adcb0373ed41a123623025e20f71d5a23d3fb4c218ed8ed6b2cf02c
 
 ## datasets
  data/cook2019_male.csv: f4a31a26655b80fa3ae980c2df55f00bfa2c6fa419d61f02fe5c35bf697f2bf3
@@ -101,7 +101,7 @@ flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
  results/witvliet_s1.csv: fd8e35f0af0233d1bbd6d7482e018ffd38e60ad0354b0d46da14ad53aedf5a6e (1201 lines)
  results/manifest.txt: 7c5261119e11ab1969b3c5576390bdfb368346120ae3b085535d366d3b8dd8a1 (87 lines)
  results/v1.0.1-baseline.txt: 28fb2316a82dea0aa06157eb32b4fa3cab36716563160b8b3e60c290f18dd3ed (18 lines)
- results/validation_manifest.txt: 998b041c527d419b35d4e5e9e4f351803180e148e7863abb152a7b3c5efc713a (103 lines)
+ results/validation_manifest.txt: 37559840bde3407cfd820a3c3180dccfec43b4772be955e8ce891b1ac637b87e (103 lines)
 
 ## figures
  figures/inverse_progress.png: ced902dd31dd8e9584b6f7f9469d35851cd5f3082b0864f00f999fd51112be57
