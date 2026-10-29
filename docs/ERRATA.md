@@ -22,6 +22,20 @@ motor output, recorded as h2.E post_hoc in docs/hypotheses.md. the
 builtin toy net is still available when data/ is absent and is not
 calibrated in v1.2.
 
+## channel deltas at v1.2, run date 2026-10-30
+
+| channel | v1.0.1 | v1.2 |
+|---|---|---|
+| null model speed ratio (shuffled over wt) | 1.27x | 2.27x |
+| cross connectome varshney | 0.442 mm/s, perim 0.74 | 0.245 mm/s, perim 0.08 |
+| mutant screen score | 5 matched, 5 mismatched | 1 matched, 1 partial, 8 mismatched |
+| prediction score | 3 confirmed, 3 refuted, 1 unscorable | 2 confirmed, 4 refuted, 1 unscorable |
+
+the p-005 flip and the achr arm divergence are new findings, not
+corrections of arithmetic: the calibration changed the operating point
+and two literature agreements from v1.0.1 do not survive. the old
+outputs are archived in results/archive_v101/ for comparison.
+
 # errata, v1.0.1
 
 published 2026-10-28. this document lists every published number that
