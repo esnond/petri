@@ -221,17 +221,70 @@ mechanosensory synapses on contact. graded, no mode switches.
 
 ## project status
 
-**v1.2 experiment** (2026-10-29, branch v1.2-fix-branch). the default
-connectome is now the full varshney wiring shipped in data/. the
-locomotion battery sits inside the literature targets on ten seeds,
-300 s: speed 0.246 +/- 0.005 mm/s, bend amplitude 2.71 +/- 0.02 1/mm,
-period 1.31 +/- 0.20 s, perimeter ratio 0.12 +/- 0.05, avb ablation
-0.79 +/- 0.03x. nine of ten seeds clear the perimeter target (s5 at
-0.31), eight of ten the period box (s6 and s9 about 1.9 s). reproduce
-with tools/battery_v12.py. robustness and the neural signature control
-are in docs/NOTEBOOK.md, defects and resolutions in docs/DEFECTS.md.
-v1.0.1 remains the last tagged release. 30 of 36 registry items done,
-the rest documented as partial with reasons in docs/DEFECTS.md.
+**v1.2 tagged** (2026-10-30, commit 8b124d0, local, push pending).
+the default connectome is the full varshney wiring in data/. every
+channel was rerun at the v1.2 constants and the v1.0.1 outputs are
+archived in results/archive_v101/ for comparison.
+
+### what is achieved
+
+- locomotion battery inside the literature targets on ten seeds,
+  300 s: speed 0.246 +/- 0.005 mm/s, bend amplitude 2.71 +/- 0.02
+  1/mm, period 1.31 +/- 0.20 s, perimeter ratio 0.12 +/- 0.05. nine
+  of ten seeds clear the perimeter target (s5 at 0.31), eight of ten
+  the period box (s6 and s9 about 1.9 s). reproduce with
+  tools/battery_v12.py.
+- avb ablation slows the worm: 0.79 +/- 0.03x on ten seeds. the sign
+  is fixed by a monotonic gate on the neuromuscular output, not by
+  tuning (docs/DEFECTS.md, v1.2 resolution).
+- rim hugging is fixed by receptor physics: the touch drive is
+  sustained while the end is pressed, split anterior and posterior.
+  no behavioral rule was added.
+- the reconstruction divergence survives recalibration: herm302 is
+  about 58 percent faster than varshney on held-out seeds, prediction
+  p-008 confirmed 10/10.
+- the null model strengthened: a degree preserving shuffled
+  connectome crawls 2.27x faster than the real wiring (was 1.27x).
+- the neural signature absence is proven by construction: the one
+  apparent temporal signature collapses to zero when the imposed
+  curvature input is removed (docs/hypotheses.md, h3.A and h3.C).
+- the engine is deterministic: same seed, same flags, same
+  connectome, bitwise identical csv, verified in make test.
+- interactive tui, surgery, swarm, inverse, gcamp, optogenetics and
+  mutant channels run on the same core.
+
+### what is honestly not achieved
+
+- the mutant screen degraded at v1.2: one matched, one partial, eight
+  mismatched on direction. the achr lever (unc-29, unc-38, unc-63)
+  speeds the crawl 1.61x where the literature says retained or slower,
+  the exocytosis arms show no effect. hypotheses registered in
+  docs/DEFECTS.md, nothing tuned away.
+- prediction p-005 (no food is faster) flipped from confirmed to
+  refuted at the new operating point.
+- prediction p-006 stays unscorable: the extractor has a metric bug.
+- habituation to repeated taps is flat at v1.2: neither habituation
+  nor the earlier sensitization reproduces. five replication seeds
+  (106 to 110) are held.
+- the constants are not on a robustness plateau: 1 of 20 ten percent
+  perturbations keeps the behavior change under 0.05. structural for a
+  limit cycle, documented in docs/NOTEBOOK.md.
+- two metrics are broken at v1.2 and flagged: the reversal count
+  includes wall slide sign rebuilds, the head to tail wavelength
+  metric degenerates to zero.
+
+### what remains
+
+- user actions outside the sandbox: git push --force origin main and
+  v1.2, a zenodo doi, manual validation against real worm tracks with
+  the petri-docs validation kit.
+- scoped near-term fixes, in order: extend the exocytosis lever to
+  the neuromuscular junction (richmond 1999), diagnose the serotonin
+  and avb gate interaction behind the p-005 flip, repair the reversal
+  and wavelength metrics, redesign the habituation protocol and spend
+  the held replication seeds. the achr arm is the hard one: it shares
+  the calibration ridge with the robustness result, and forcing it
+  risks the battery targets.
 
 ## reproducibility
 
