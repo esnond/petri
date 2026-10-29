@@ -1,10 +1,10 @@
-# petri validation manifest, 2026-10-28T19:21:33Z
-commit: 01c271335fda35e29ba6932caf941cd6fd8d1ac2
+# petri validation manifest, 2026-10-29T03:17:35Z
+commit: a9f327f218ebc57253d3e84c0f2e5dfb555ed619
 compiler: cc (Debian 14.2.0-19) 14.2.0
 flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
 
 ## binary
- petri: 5c5e92b60acfb912addcaf907d212313d7a80b9f745991f968eb36cb307bebc7
+ petri: ff8990968cf04fe56b01441bf0e1f7af072162f2bf41edaf2e115dfcc212e789
 
 ## datasets
  data/cook2019_male.csv: f4a31a26655b80fa3ae980c2df55f00bfa2c6fa419d61f02fe5c35bf697f2bf3
@@ -85,6 +85,9 @@ flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
  results/p010_swarm_102.csv: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 (0 lines)
  results/predictions_heldout.csv: 7e28c770452f8303b93b74ce63ee8886b2c6ac5ac87d5b61d5ee1fd3f01360a7 (261 lines)
  results/robustness.csv: 3e1088b68751fb236ee8fe945e3e5a3e6025a190530657a73da42758d3e07909 (33 lines)
+ results/robustness_v12.csv: aa65baac8cdaad1390e349d689d6c0081d3f2a7081f09765bc2d3a9d64f09711 (21 lines)
+ results/seed1_baseline.csv: 20741e397a1c514c8f60e3511931c4de459b09f95e521d80e568dba8865200ea (3001 lines)
+ results/seed2_baseline.csv: 6df3dd00d86eb12ad775d1b7adc0a3a5e707adfe325e4418f736f39bde855dc8 (3001 lines)
  results/summary.csv: dba683c9dc5de7703ee78328b4da8656970617b2b8bb72e0480b930c61deff17 (6 lines)
  results/swarm_pos.csv: 46861cff8cf4f1fdbba562f38f8da027fd3d42bfb55b91c76efb2bfd441b092d (36001 lines)
  results/swarm_pos_food.csv: dc962fb8a1100c6d589518fec48f7e315f0daff8c051743ebeb16ab68d7b5347 (72001 lines)
@@ -93,10 +96,12 @@ flags: CFLAGS   = -std=c99 -Wall -Wextra -pedantic -O2 -ffp-contract=off
  results/traces_gcamp.csv: f91abf6d457071e58c2e3785954be546b58dafe2ec66cfa291ed135538de9f09 (12001 lines)
  results/traces_gcamp_s3.csv: a418f01fae5d170548b1c0fedd008b0a0a94249c1054f8bb726aae265bf4fe02 (18001 lines)
  results/traces_gcamp_s9.csv: f696f1942f1ff4f68c8a927f39edacb4ef413e0e24a5484cad8e733e1984466f (18001 lines)
+ results/v12_battery.csv: b3d5c04b725dd3bb9cf7ddaa33154d11d98fff7ce34beb20395605a26be97511 (11 lines)
  results/varshney_s1.csv: 57cfd0face660ddf76788e04c2db47791ecf553823a0a9f42ba94db76745c997 (1201 lines)
  results/witvliet_s1.csv: fd8e35f0af0233d1bbd6d7482e018ffd38e60ad0354b0d46da14ad53aedf5a6e (1201 lines)
  results/manifest.txt: 7c5261119e11ab1969b3c5576390bdfb368346120ae3b085535d366d3b8dd8a1 (87 lines)
- results/validation_manifest.txt: a6ecee701dd5aad96183a24a99494c8355980a9e2560dff215824245b6462029 (98 lines)
+ results/v1.0.1-baseline.txt: 28fb2316a82dea0aa06157eb32b4fa3cab36716563160b8b3e60c290f18dd3ed (18 lines)
+ results/validation_manifest.txt: 998b041c527d419b35d4e5e9e4f351803180e148e7863abb152a7b3c5efc713a (103 lines)
 
 ## figures
  figures/inverse_progress.png: ced902dd31dd8e9584b6f7f9469d35851cd5f3082b0864f00f999fd51112be57
