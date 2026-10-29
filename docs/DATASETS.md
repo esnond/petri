@@ -97,11 +97,19 @@ results/cross_connectome.csv when the sweep lands.
 
 ## results
 
+v1.2 constants, run date 2026-10-30, code sha 4aa05dc. the v1.0.1 screen
+is archived in results/archive_v101/. the wavelength column reads 0.00
+across the board at v1.2, the head to tail lag metric degenerates at
+these constants, treat it as broken until re-examined. the varshney
+reversal count is metric sensitive: it counts episodes of at least 0.5 s
+negative velocity, which includes wall slide sign rebuilds, no
+biological reversal claim is made from it.
+
 | connectome | n | speed mm/s | bend amp 1/mm | period s | wavelength bl | reversal events | perimeter ratio |
 |---|---|---|---|---|---|---|---|
-| herm302 | 10 | 0.449 | 2.88 | 4.87 | 0.00 | 5.0 | 0.00 |
-| male | 10 | 0.295 | 3.08 | 1.93 | 0.14 | 0.0 | 0.20 |
-| varshney | 10 | 0.423 | 3.08 | 0.74 | 0.84 | 1.0 | 0.96 |
+| varshney | 10 | 0.245 | 2.71 | 1.31 | 0.00 | 121.1 | 0.08 |
+| herm302 | 10 | 0.371 | 2.54 | 2.98 | 0.00 | 0.2 | 0.00 |
+| male | 10 | 0.292 | 2.83 | 1.61 | 0.00 | 0.0 | 0.21 |
 | witvliet | 10 | 0.000 | 0.00 | 0.00 | 0.00 | 0.0 | 0.00 |
 
 
@@ -142,6 +150,22 @@ refuted with a hypothesis, nothing is retuned.
 held-out results are appended below by tools/test_predictions.sh with
 the run date; a verdict is confirmed when the effect direction holds
 on at least 7 of the 10 held-out seeds.
+
+## held-out outcomes, v1.2 constants, seeds 101..110, run date 2026-10-30, code sha 4aa05dc
+
+| id | verdict | measured | reading |
+|---|---|---|---|
+| petri-p-001 | CONFIRMED 9/10 | cut ava speed ratio median 1.11x (9 of 10 above 1.0) | operating point release persists, weaker at v1.2 |
+| petri-p-002 | REFUTED 4/10 | rim ablation 204.1 vs control 194.2 episodes | verdict unchanged, the registry metric mismatch stays open |
+| petri-p-003 | REFUTED 5/10 | second half 95.1 vs first half 98.2 | direction reversed toward habituation, below the 7/10 bar |
+| petri-p-004 | REFUTED 3/10 | ash cut 0.036 vs control 0.026 | both arms near zero rim time at v1.2, the sustained touch escape removed the baseline this prediction needs |
+| petri-p-005 | REFUTED 2/10 | no food 0.229 vs food 0.245 | flip from confirmed: dwell dilution does not reproduce at v1.2 |
+| petri-p-006 | UNSCORABLE | extractor writes period_s while calling freq(), value 8.99, no control arm | extractor bug, prediction stays open |
+| petri-p-008 | CONFIRMED 10/10 | herm302 0.387 vs varshney 0.245, divergence 35 to 85 percent | reconstruction divergence survives the recalibration |
+
+score: 2 confirmed, 4 refuted with readings, 1 unscorable. p-007,
+p-009 and p-010 keep their dev-seed verdicts, the runner still has no
+held-out arms for them.
 
 ## held-out outcomes, seeds 101..110, run date 2026-10-27, code sha fa7bb52
 
@@ -193,33 +217,36 @@ catalogue and its successor papers, cited per lever in src/mutants.c.
 
 | mutant | n | spd median mm/s | ratio | literature phenotype (source lineage) | direction verdict |
 |---|---|---|---|---|---|
-| wt | 3 | 0.496 | 1.00 | baseline | |
-| unc-10 | 3 | 0.485 | 0.98 | vesicle docking, severe | MISMATCH |
-| unc-103 | 3 | 0.488 | 0.99 | erg like k channel, posterior | mild (direction not scored) |
-| unc-13 | 3 | 0.485 | 0.98 | exocytosis, severe locomotion defect | MISMATCH |
-| unc-17 | 3 | 0.496 | 1.00 |  | mild (direction not scored) |
-| unc-18 | 3 | 0.485 | 0.98 | vesicle priming, severe | MISMATCH |
-| unc-22 | 3 | 0.496 | 1.00 | twitchin, body twitching | mild (direction not scored) |
-| unc-25 | 3 | 0.603 | 1.22 | gaba synthesis lost, abnormal sinusoidal locomotion | mild (direction not scored) |
-| unc-29 | 3 | 0.398 | 0.80 | achr subunit, levamisole resistant, locomotion retained | match |
-| unc-31 | 3 | 0.238 | 0.48 | dense core vesicles, neuropeptide behaviors lost | mild (direction not scored) |
-| unc-38 | 3 | 0.398 | 0.80 | achr subunit | match |
-| unc-49 | 3 | 0.603 | 1.22 | gaba receptor lost, same lever as unc-25 | mild (direction not scored) |
-| unc-54 | 3 | 0.297 | 0.60 | myosin heavy chain, paralysis or severe slowing | match |
+| wt | 3 | 0.251 | 1.00 | baseline |  |
+| unc-10 | 3 | 0.246 | 0.98 | vesicle docking, severe | MISMATCH |
+| unc-103 | 3 | 0.239 | 0.95 | erg like k channel, posterior | mild (direction not scored) |
+| unc-13 | 3 | 0.246 | 0.98 | exocytosis, severe locomotion defect | MISMATCH |
+| unc-17 | 3 | 0.251 | 1.00 |  | mild (direction not scored) |
+| unc-18 | 3 | 0.246 | 0.98 | vesicle priming, severe | MISMATCH |
+| unc-22 | 3 | 0.247 | 0.98 | twitchin, body twitching | mild (direction not scored) |
+| unc-25 | 3 | 0.223 | 0.88 | gaba synthesis lost, abnormal sinusoidal locomotion | mild slow (weak direction hold) |
+| unc-29 | 3 | 0.404 | 1.61 | achr subunit, levamisole resistant, locomotion retained | MISMATCH |
+| unc-31 | 3 | 0.276 | 1.10 | dense core vesicles, neuropeptide behaviors lost | mild (direction not scored) |
+| unc-38 | 3 | 0.404 | 1.61 | achr subunit | MISMATCH |
+| unc-49 | 3 | 0.223 | 0.88 | gaba receptor lost, same lever as unc-25 | mild slow (weak direction hold) |
+| unc-54 | 3 | 0.194 | 0.77 | myosin heavy chain, paralysis or severe slowing | partial (direction holds, severity underestimated) |
 | unc-54-severe | 3 | 0.000 | 0.00 | paralysis | match |
-| unc-58 | 3 | 0.508 | 1.02 | potassium conductance | mild (direction not scored) |
-| unc-63 | 3 | 0.398 | 0.80 | achr subunit | match |
-| unc-64 | 3 | 0.485 | 0.98 | exocytosis, severe | MISMATCH |
-| unc-77 | 3 | 0.539 | 1.09 | sodium channel family, slower membranes | MISMATCH |
-| unc-8 | 3 | 0.491 | 0.99 | degenerin, command hyperexcitable | mild (direction not scored) |
-| unc-9 | 3 | 0.326 | 0.66 | innexin, gap junction loss in command layer | mild (direction not scored) |
+| unc-58 | 3 | 0.224 | 0.89 | potassium conductance | mild (direction not scored) |
+| unc-63 | 3 | 0.404 | 1.61 | achr subunit | MISMATCH |
+| unc-64 | 3 | 0.246 | 0.98 | exocytosis, severe | MISMATCH |
+| unc-77 | 3 | 0.288 | 1.14 | sodium channel family, slower membranes | MISMATCH |
+| unc-8 | 3 | 0.233 | 0.93 | degenerin, command hyperexcitable | mild (direction not scored) |
+| unc-9 | 3 | 0.252 | 1.00 | innexin, gap junction loss in command layer | mild (direction not scored) |
 
-score: 5 matched, 5 mismatched on direction, the rest
-scored mild where the literature does not state a locomotion speed
-direction. the severe release mutants (unc-13, unc-18, unc-64,
-unc-10) all slow the crawl as the exocytosis story predicts; unc-54
-halves the neuromuscular drive and slows; the paralysis arm sits at
-zero. the mild arms behave as mild.
+v1.2 rerun, run date 2026-10-30, code sha 4aa05dc. score: one
+matched (the paralysis arm), one partial (unc-54 direction holds at
+0.77 but the literature severity is not reproduced), eight mismatched
+on direction, the rest scored mild. the achr arm (unc-29, unc-38,
+unc-63, one shared lever) speeds the crawl up 1.61x where the
+literature says retained or slower locomotion. the exocytosis arms
+(unc-13, unc-18, unc-64, unc-10) still show no effect: the stsp
+utilization knob does not move the v1.2 gait. the v1.0.1 screen
+(5 matched, 5 mismatched) is archived in results/archive_v101/.
 
 
 ---
