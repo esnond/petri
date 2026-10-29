@@ -55,3 +55,50 @@ falsification: longer data still null.
 h3.C genuine_absence: the model produces behavior via a different
 route than life, no single neuron signature exists by construction.
 falsification: a signature appears under h3.A or h3.B.
+
+## results, 2026-10-29, filled after the battery
+
+h1.1 rim_hugging: REFUTED as stated. mean perimeter ratio 0.12, nine
+of ten seeds below 0.30, s5 at 0.31. mechanism found (sustained
+anterior and posterior touch drive), but the all-ten criterion failed
+by one seed. see the notebook entry for the sharp mec_g transition.
+
+h1.2 speed: REFUTED as stated. drag ratio 20 to 28 was not the lever;
+raising drag ratio broke the wave. speed landed instead via drag t,
+nmj gain and the avb motor gate. the target was met, the stated
+mechanism was wrong. post_hoc.
+
+h2.A phasic_initiator: not supported. avb ablation now slows the worm
+but without any periodic burst trigger; the effect is a permissive
+gate on motor output, not wave onset.
+
+h2.B pacemaker_in_loop: falsified. after ablation the undulation does
+not collapse, earlier probes showed it can even speed up. avb does not
+set the wave frequency.
+
+h2.C gain_modulator_in_loop: falsified as a robust mechanism. the
+reflex gain version was implemented and gave a sign that flipped with
+the operating point (ratio 0.46x at one setting, 2.3x at another).
+not monotonic, therefore not usable as a phenotype.
+
+h2.E post_hoc gating: CONFIRMED. avb gates the nmj output, smoothed
+over 2 s. ablation removes drive and can only slow the worm. ten of
+ten seeds, ratio 0.79 +/- 0.03x. registered after the mechanism was
+found, so it is post_hoc and does not retroactively support h2.A-D.
+
+h1.3 constants: NOT ACHIEVED as stated. the scan (three seeds, 120 s,
+plus minus ten percent on ten constants) gives behavior_change under
+0.05 for one of twenty perturbations, prop back weight at 0.9x
+(0.042). the worst is avb bias at 0.9x (3.07, period 5.6 s), then prop
+self weight (0.85 and 1.63), bend gain at 0.9x (1.26) and the avb gate
+floor (1.16). the failure is structural, not a tuning miss: the period
+scales with the constants that set the loop time scale, so a ten
+percent constant shift moves the period about ten percent by
+construction. the speed and amplitude are far more stable (amplitude
+within 16 percent across the whole scan). the 0.05 criterion conflates
+fragility with a definitional response of a limit cycle's period.
+recorded as a result, not worked around.
+
+h1.4 habituation: untested this round.
+
+h3.A/B/C: see the neural signature note in the notebook.

@@ -368,6 +368,25 @@ which both stops the slide and pitches the nose away.
 open. documented 2026-10-27, probe data reproducible with
 tools/perimeter_ratio.py and the constants table above.
 
+## v1.2 resolution, 2026-10-29
+
+the edge-only receptor was the blocker. the touch and pain envelopes
+refreshed on the contact edge and then decayed, so a worm wedged at the
+rim carried no signal after the first pulse. the fix keeps the
+receptor current sustained while the end is pressed, and splits it by
+end: alm and avm on nose contact, plm and pvm on tail contact. gentle
+touch cells are slowly adapting and keep firing under constant
+pressure, so this is receptor physics, not a rule.
+
+result, ten seeds, 300 s, varshney full: mean perimeter ratio 0.12 +/-
+0.05, nine of ten seeds below 0.30. s5 is 0.31. a sharp transition
+bounds the fix: at mec_g 10 the amplitude is 2.7 and s5 sits at 0.31,
+at mec_g 11 every seed clears the perimeter target but the amplitude
+falls to 1.6. the same drive that bends the worm off the wall
+interrupts the forward wave, so there is no smooth mec_g that buys
+both. the committed set keeps the amplitude, s5 is a documented
+marginal miss. status: mostly closed, one seed open.
+
 
 ---
 
@@ -426,6 +445,23 @@ set a tone; our architecture gives them tone only.
 
 no constant was tuned to reduce this divergence. the numbers above are
 the shipped configuration (commit 5e6a1de lineage).
+
+## v1.2 resolution, 2026-10-29
+
+the sign flips because two effects fight. avb holds the motor pool in
+saturation (removing it speeds the gait up) and avb carries forward
+drive (removing it slows). tuning the reflex gain to favor slowing was
+not robust: the ratio flipped between 0.46x and 2.3x with the operating
+point. the fix gates the neuromuscular output itself with a 2 s
+smoothed avb command. gating the muscle output can only remove drive,
+so the direction is monotonic by construction, not by tuning. floor
+0.3 keeps an ablated worm crawling, a graded phenotype rather than
+paralysis.
+
+result, ten seeds, 300 s: ablation ratio 0.79 +/- 0.03x, ten of ten
+slow. this is a command gate on motor output, recorded as h2.E post_hoc
+in the hypotheses file. it answers the sign but not the mechanism the
+model originally claimed: avb still does not initiate the wave.
 
 ## v1.0.1 patch defects, 2026-10-28
 
