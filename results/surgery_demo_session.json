@@ -1,10 +1,10 @@
 {
  "surgery": [
-  {"op": "cut", "neuron": "AVA", "run_speed_mm_s": 0.151},
-  {"op": "cut", "neuron": "AVD", "run_speed_mm_s": 0.165},
-  {"op": "restore", "neuron": "AVA", "run_speed_mm_s": 0.176}
+  {"op": "cut", "neuron": "AVA", "run_speed_mm_s": 0.272},
+  {"op": "cut", "neuron": "AVD", "run_speed_mm_s": 0.266},
+  {"op": "restore", "neuron": "AVA", "run_speed_mm_s": 0.223}
  ],
- "baseline_run_speed_mm_s": 0.180,
+ "baseline_run_speed_mm_s": 0.250,
  "seed": 5,
  "duration_s": 120
 }

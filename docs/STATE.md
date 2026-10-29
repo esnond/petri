@@ -1,6 +1,6 @@
 # state checkpoint, v1.2 experiment
 
-updated 2026-10-29, branch v1.2-fix-branch
+updated 2026-10-30, branch v1.2-fix-branch
 anchor: v1.0.1-stable (never moved)
 
 ## status
@@ -35,9 +35,15 @@ the three earlier independent negatives (adaptation, command
 proprioception, ablation) stand. the h3.A temporal probe is the last
 item.
 
-## next
+## release readiness, 2026-10-30
 
-1. finish the h3.A temporal signature probe, record h3.A or h3.C.
-2. merge into main, tag v1.2 after the author's manual validation.
-3. user actions outside the sandbox: force push main and v1.2, zenodo
-   doi, petri-docs validation on real tracks.
+phase A done: all four channels rerun at v1.2, tables in DATASETS.md,
+findings in DEFECTS.md and ERRATA.md, v1.0.1 outputs archived in
+results/archive_v101/. phase B done: h1.4 flat, recorded. phase C
+done: paper stamped, four docx regenerated and verified by unzip,
+manifest below. phase D: tag moved, push and doi are user actions.
+
+open items for the user: git push --force origin main and v1.2,
+zenodo doi, manual validation on real tracks. known degradations,
+registered not hidden: mutant screen 1 matched / 8 mismatched, p-005
+flip, p-006 extractor bug, degenerate wavelength metric.
