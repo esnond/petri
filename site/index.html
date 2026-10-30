@@ -3,37 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>:root{--paper:#f7f8f0;--card:#fffefa;--ink:#2f3b2f;--mute:#6b7565;--crayon:#5f7a5f;--hl:#e9efdf;--line:#d5ddc8}
+header .worm{position:absolute}</style>
 <title>petri: маленький движок червя</title>
 <meta name="description" content="движок симуляции коннектома C. elegans на c99: 279 нейронов, детерминированный реплей, ноль зависимостей.">
-<style>
-  :root{--paper:#f7f8f0;--card:#fffefa;--ink:#2f3b2f;--mute:#6b7565;--worm:#5f7a5f;--hl:#e9efdf;--line:#d5ddc8}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font:17px/1.75 'Segoe Print','Bradley Hand','Comic Sans MS','Chalkboard SE',cursive}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;
-    background-image:radial-gradient(#cdd6bb 1.1px,transparent 1.4px);background-size:26px 26px;opacity:.5}
-  .wrap{max-width:860px;margin:0 auto;padding:0 22px;position:relative}
-  a{color:var(--worm);text-decoration:underline wavy rgba(95,122,95,.5);text-underline-offset:4px}
-  .sk{border:2.2px solid var(--ink);background:var(--card);
-    border-radius:255px 18px 225px 18px/18px 225px 18px 255px;
-    box-shadow:3px 4px 0 rgba(47,59,47,.13)}
-  .sk2{border-radius:18px 225px 18px 255px/255px 18px 225px 18px}
-  .rot-l{transform:rotate(-.6deg)} .rot-r{transform:rotate(.55deg)}
-  header{padding:50px 0 26px}
-  h1{font-size:clamp(30px,5vw,44px);margin:0}
-  h1 small{display:block;font-size:15px;color:var(--mute);margin-top:6px}
-  .worm{position:absolute;right:20px;top:52px;width:150px;opacity:.92}
-  section{padding:36px 0}
-  h2{font-size:23px;margin:0 0 16px}
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-  .fact{padding:12px 15px}
-  .fact b{display:block;font-size:21px}
-  .fact small{color:var(--mute);font-size:13px;display:block;margin-top:3px}
-  pre{background:var(--hl);border:2px dashed var(--line);border-radius:12px;
-    padding:13px 16px;font:13px/1.6 monospace;overflow:auto}
-  ul{padding-left:22px} li{margin:8px 0}
-  footer{padding:24px 0 44px;color:var(--mute);font-size:13.5px}
-</style>
+
 </head>
 <body>
 

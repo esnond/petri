@@ -1,0 +1,98 @@
+/* единый стиль семейства esnond: бумага, волнистые границы, мелковые акценты.
+   каждый сайт перекрашивает акцент через :root в своей странице,
+   сами правила живут здесь и здесь же чинятся */
+:root{--warn:#a8813c}
+:root{
+    --paper:#fbf6ec; --card:#fffdf6; --ink:#43323b; --mute:#7a6a70;
+    --crayon:#b3312c; --soft:#6f7d6a; --sky:#5b7d9e; --hl:#f4e7cd; --line:#d9cbb2;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font:17px/1.75 'Segoe Print','Bradley Hand','Comic Sans MS','Chalkboard SE',cursive;
+  }
+  body::before{content:""; position:fixed; inset:0; pointer-events:none;
+    background-image:radial-gradient(#d9cdb4 1.1px, transparent 1.4px);
+    background-size:26px 26px; opacity:.5}
+  .wrap{max-width:900px; margin:0 auto; padding:0 22px; position:relative}
+  a{color:var(--crayon); text-decoration:underline wavy rgba(179,49,44,.5); text-underline-offset:4px}
+  a:hover{color:var(--ink)}
+  .sk{border:2.2px solid var(--ink); background:var(--card);
+    border-radius:255px 18px 225px 18px/18px 225px 18px 255px;
+    box-shadow:3px 4px 0 rgba(67,50,59,.14)}
+  .sk2{border-radius:18px 225px 18px 255px/255px 18px 225px 18px}
+  .rot-l{transform:rotate(-.7deg)} .rot-r{transform:rotate(.6deg)}
+  header{padding:52px 0 30px}
+  .hero{display:flex; gap:26px; align-items:center; flex-wrap:wrap}
+  .mascot{width:172px; max-width:42vw; padding:10px; flex:none}
+  .mascot img{display:block; width:100%; border-radius:12px}
+  h1{font-size:clamp(34px,6vw,52px); margin:0; line-height:1.15}
+  h1 small{display:block; font-size:15px; color:var(--mute); margin-top:6px}
+  .sub{margin:14px 0 0; font-size:16.5px; max-width:560px}
+  .chips{margin-top:16px; display:flex; flex-wrap:wrap; gap:9px}
+  .chip{font-size:12.5px; padding:3px 13px; border:2px solid var(--ink);
+    border-radius:255px 15px 225px 15px/15px 225px 15px 255px; background:var(--card)}
+  .chip.hot{border-color:var(--crayon); color:var(--crayon)}
+  section{padding:42px 0}
+  h2{font-size:26px; margin:0 0 8px}
+  h2::after{content:"";display:block;width:190px;height:10px;margin-top:4px;
+  background:var(--crayon);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 6 Q 14 1 26 6 T 50 6 T 74 6 T 98 6 T 122 6 T 146 6 T 170 6 T 188 6' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/190px 10px;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 6 Q 14 1 26 6 T 50 6 T 74 6 T 98 6 T 122 6 T 146 6 T 170 6 T 188 6' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/190px 10px}
+  .lead{color:var(--mute); font-size:15px; margin:0 0 22px}
+  .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  .stat{padding:14px 16px; margin-bottom:4px}
+  .stat b{display:block; font-size:23px; font-weight:700; letter-spacing:.5px}
+  .stat small{color:var(--mute); font-size:13px; line-height:1.5; display:block; margin-top:4px}
+  .c-crayon b{color:var(--crayon)} .c-soft b{color:var(--soft)} .c-sky b{color:var(--sky)}
+  .qa{margin-top:6px}
+  .row{display:flex; gap:16px; margin:22px 0; align-items:flex-start}
+  .row:nth-child(even){flex-direction:row-reverse}
+  .ava{width:88px; flex:none; padding:6px}
+  .ava img{display:block; width:100%; border-radius:10px}
+  .bubble{flex:1; padding:13px 18px}
+  .bubble .q{font-weight:700; color:var(--crayon); font-size:16px; margin:0 0 4px}
+  .bubble p{margin:0; font-size:15.5px}
+  ol.rej{margin:0; padding-left:24px}
+  ol.rej li{margin:13px 0}
+  .figs{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  figure{margin:0; padding:13px}
+  figure img{width:100%; height:auto; display:block; border-radius:9px; background:#fff}
+  figcaption{font-size:13px; color:var(--mute); margin-top:8px}
+  .cards{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+  .ver{padding:18px 20px}
+  .ver h3{margin:0 0 6px; font-size:17px}
+  .ver p{margin:0 0 13px; color:var(--mute); font-size:14.5px}
+  .btn{display:inline-block; padding:6px 17px; font-size:14.5px;
+    border:2px solid var(--ink); border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+    background:var(--card); color:var(--ink); text-decoration:none}
+  .btn:hover{border-color:var(--crayon); color:var(--crayon)}
+  .btn.alt{border-color:var(--crayon); color:var(--crayon)}
+  .btn.alt:hover{color:var(--ink); border-color:var(--ink)}
+  .note{font-size:14.5px; color:var(--mute); margin-top:18px}
+  footer{padding:30px 0 60px}
+  footer p{padding:14px 18px; font-size:14.5px}
+
+/* общие блоки второй волны сайтов */
+pre{background:var(--hl);border:2px dashed var(--line);border-radius:12px;
+  padding:13px 16px;font:13px/1.6 monospace;overflow:auto}
+ul{padding-left:22px} ol{padding-left:22px} li{margin:8px 0}
+.fact{padding:12px 15px;margin-bottom:4px}
+.fact b{display:block;font-size:21px}
+.fact small{color:var(--mute);font-size:13px;display:block;margin-top:3px}
+.warn{display:inline-block;padding:4px 14px;font-size:13px;color:var(--warn,#a8813c);
+  border:2px dashed var(--warn,#a8813c);
+  border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+.flow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:16px 0}
+.flow .step{padding:11px 13px;text-align:center;font-size:14.5px}
+.led{display:inline-block;width:14px;height:14px;border-radius:50%;
+  border:2px solid var(--ink);background:var(--crayon);vertical-align:middle;animation:blink 2.1s infinite}
+@keyframes blink{0%,45%{opacity:1}55%,100%{opacity:.25}}
+.worm{position:absolute;right:20px;top:52px;width:150px;opacity:.92}
+header.center{text-align:center}
+header.center .ava{width:190px;margin:0 auto 6px}
+footer .sk{display:inline-block;padding:12px 20px}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#171a16;--card:#1f241d;--ink:#e4e6dc;--mute:#9aa192;
+    --hl:#252b22;--line:#39412f}
+}
