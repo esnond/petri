@@ -103,3 +103,43 @@ footer .sk{display:inline-block;padding:12px 20px}
 .card p{margin:0 0 12px;font-size:14.5px;color:var(--mute)}
 .card img{width:84px;float:right;margin:-6px -6px 4px 8px;border-radius:10px;padding:4px}
 .btn.cool{background:var(--sky)}
+
+/* ---------- волк-беглец, звуки, загрузка ---------- */
+.wolfrun{position:fixed;bottom:4px;left:-150px;width:110px;z-index:60;
+  color:var(--crayon);cursor:pointer;
+  animation:wolfpath 34s linear infinite}
+.wolfrun svg{width:100%;display:block;filter:drop-shadow(2px 3px 0 rgba(67,50,59,.18))}
+@keyframes wolfpath{
+  0%{left:-150px} 8%{left:14vw} 15%{left:14vw} 16%{transform:scaleX(-1)} 17%{transform:scaleX(1)}
+  38%{left:52vw} 44%{left:52vw} 66%{left:92vw} 72%{left:calc(100vw + 40px)} 100%{left:calc(100vw + 40px)}}
+.wolfrun .wl{transform-box:fill-box;transform-origin:top center;animation:legstep .42s ease-in-out infinite alternate}
+.wolfrun .l2,.wolfrun .l4{animation-delay:.21s}
+@keyframes legstep{from{transform:rotate(13deg)}to{transform:rotate(-13deg)}}
+.wolfrun .wbody{animation:bob .42s ease-in-out infinite alternate}
+.wolfrun .wtail{transform-box:fill-box;transform-origin:bottom left;animation:wag .5s ease-in-out infinite alternate}
+@keyframes bob{from{translate:0 0}to{translate:0 -2px}}
+@keyframes wag{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
+.wolfrun.jump svg{animation:jumpy .5s ease-out}
+@keyframes jumpy{30%{transform:translateY(-26px) rotate(-6deg)}60%{transform:translateY(0)}80%{transform:translateY(-8px)}}
+.wolfrun.pack1{animation-duration:22s;bottom:52px;width:80px;animation-delay:3s}
+.wolfrun.pack2{animation-duration:29s;bottom:96px;width:64px;animation-delay:7s}
+.wiggle{animation:wiggle .45s ease-in-out}
+@keyframes wiggle{25%{transform:rotate(-2.4deg) scale(1.03)}60%{transform:rotate(2deg) scale(1.02)}}
+.sk{transition:transform .18s ease}
+.sk:hover{transform:translateY(-2px) rotate(.2deg)}
+.mutebtn{position:fixed;top:10px;right:10px;z-index:70;width:40px;height:40px;
+  border:2px solid var(--ink);background:var(--card);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  cursor:pointer;font-size:17px;box-shadow:2px 3px 0 rgba(67,50,59,.14)}
+#loader{position:fixed;inset:0;z-index:99;background:var(--paper);
+  display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;
+  transition:opacity .5s ease}
+#loader.done{opacity:0;pointer-events:none}
+#loader .wl-mascot{width:120px;color:var(--crayon);animation:loaderbob .6s ease-in-out infinite alternate}
+#loader .wl-mascot svg{width:100%}
+#loader .wl-mascot .wl{transform-box:fill-box;transform-origin:top center;animation:legstep .3s ease-in-out infinite alternate}
+#loader p{color:var(--mute);font-size:14px;margin:0}
+@keyframes loaderbob{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
+@media (prefers-reduced-motion: reduce){
+  .wolfrun,#loader .wl-mascot,.wiggle{display:none !important;animation:none !important}
+  *{animation-duration:.01ms !important;transition:none !important}
+}
