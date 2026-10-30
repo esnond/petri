@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>petri: маленький движок червя</title>
+<meta name="description" content="движок симуляции коннектома C. elegans на c99: 279 нейронов, детерминированный реплей, ноль зависимостей.">
+<style>
+  :root{--paper:#f7f8f0;--card:#fffefa;--ink:#2f3b2f;--mute:#6b7565;--worm:#5f7a5f;--hl:#e9efdf;--line:#d5ddc8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:17px/1.75 'Segoe Print','Bradley Hand','Comic Sans MS','Chalkboard SE',cursive}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;
+    background-image:radial-gradient(#cdd6bb 1.1px,transparent 1.4px);background-size:26px 26px;opacity:.5}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px;position:relative}
+  a{color:var(--worm);text-decoration:underline wavy rgba(95,122,95,.5);text-underline-offset:4px}
+  .sk{border:2.2px solid var(--ink);background:var(--card);
+    border-radius:255px 18px 225px 18px/18px 225px 18px 255px;
+    box-shadow:3px 4px 0 rgba(47,59,47,.13)}
+  .sk2{border-radius:18px 225px 18px 255px/255px 18px 225px 18px}
+  .rot-l{transform:rotate(-.6deg)} .rot-r{transform:rotate(.55deg)}
+  header{padding:50px 0 26px}
+  h1{font-size:clamp(30px,5vw,44px);margin:0}
+  h1 small{display:block;font-size:15px;color:var(--mute);margin-top:6px}
+  .worm{position:absolute;right:20px;top:52px;width:150px;opacity:.92}
+  section{padding:36px 0}
+  h2{font-size:23px;margin:0 0 16px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .fact{padding:12px 15px}
+  .fact b{display:block;font-size:21px}
+  .fact small{color:var(--mute);font-size:13px;display:block;margin-top:3px}
+  pre{background:var(--hl);border:2px dashed var(--line);border-radius:12px;
+    padding:13px 16px;font:13px/1.6 monospace;overflow:auto}
+  ul{padding-left:22px} li{margin:8px 0}
+  footer{padding:24px 0 44px;color:var(--mute);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <svg class="worm" viewBox="0 0 150 90" role="img" aria-label="червяк, нарисованный от руки">
+      <path d="M8 62 Q 26 30 48 52 T 92 50 Q 112 44 118 28 Q 124 16 136 24"
+        fill="none" stroke="#5f7a5f" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 0"/>
+      <circle cx="136" cy="26" r="2.6" fill="#2f3b2f"/>
+      <path d="M30 74 q 8 5 16 0" fill="none" stroke="#5f7a5f" stroke-width="2.4"/>
+    </svg>
+    <h1>petri<small>движок нервной системы червя: c99, ноль зависимостей, реплей бит в бит</small></h1>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>шесть фактов вместо маркетинга</h2>
+    <div class="grid">
+      <div class="fact sk rot-l"><b>279</b><small>нейронов, проводка варшней 2011, загружается из csv</small></div>
+      <div class="fact sk sk2 rot-r"><b>0</b><small>внешних библиотек: только стандартная библиотека c</small></div>
+      <div class="fact sk rot-r"><b>1.25 мс</b><small>на тик модельного времени на обычном процессоре</small></div>
+      <div class="fact sk sk2 rot-l"><b>бит в бит</b><small>одинаковый журнал при одинаковой затравке, проверено гейтом</small></div>
+      <div class="fact sk rot-l"><b>v1.2</b><small>теги v1.0, v1.0.1, v1.2; канал изменений в docs/ERRATA.md</small></div>
+      <div class="fact sk sk2 rot-r"><b>3</b><small>проекта уже встраивают: proteus, helix и python по ctypes</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>запуск и встраивание</h2>
+    <pre>git clone https://github.com/esnond/petri && cd petri
+make && ./petri --seed 42 --seconds 60 --journal party.csv
+
+# питон прямо поверх собранной библиотеки:
+import ctypes
+lib = ctypes.cdll.LoadLibrary("./libpetri.so")</pre>
+    <ul>
+      <li><b>журнал это контракт:</b> каждая партия пишет csv по 10 мс модельного времени; по нему воспроизводится всё, включая графики.</li>
+      <li><b>вендоринг вербатим:</b> проекты копируют движок каталогом и фиксируют хэши, как helix в VENDORED.md; merges upstream идут вручную и осознанно.</li>
+      <li><b>документация:</b> methods, defects, errata, validation и атлас экспериментов лежат в docs/, руководство для автора отдельно.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sk sk2 rot-l" style="display:inline-block;padding:12px 20px">
+      червяк сверху нарисован от руки и смотрит на вас с пониманием · <a href="https://github.com/esnond/petri">github.com/esnond/petri</a> · <a href="https://esnond.github.io/proteus/">главный проект на волке</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
