@@ -96,3 +96,10 @@ footer .sk{display:inline-block;padding:12px 20px}
   :root{--paper:#171a16;--card:#1f241d;--ink:#e4e6dc;--mute:#9aa192;
     --hl:#252b22;--line:#39412f}
 }
+
+/* карточки проектов профиля */
+.card{padding:16px 18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0 0 12px;font-size:14.5px;color:var(--mute)}
+.card img{width:84px;float:right;margin:-6px -6px 4px 8px;border-radius:10px;padding:4px}
+.btn.cool{background:var(--sky)}
