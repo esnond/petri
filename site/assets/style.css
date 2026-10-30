@@ -1,6 +1,5 @@
 /* единый стиль семейства esnond: бумага, волнистые границы, мелковые акценты.
-   каждый сайт перекрашивает акцент через :root в своей странице,
-   сами правила живут здесь и здесь же чинятся */
+   акцент сайта задаётся :root в самой странице; правила живут здесь */
 :root{--warn:#a8813c}
 :root{
     --paper:#fbf6ec; --card:#fffdf6; --ink:#43323b; --mute:#7a6a70;
@@ -35,10 +34,8 @@
   .chip.hot{border-color:var(--crayon); color:var(--crayon)}
   section{padding:42px 0}
   h2{font-size:26px; margin:0 0 8px}
-  h2::after{content:"";display:block;width:190px;height:10px;margin-top:4px;
-  background:var(--crayon);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 6 Q 14 1 26 6 T 50 6 T 74 6 T 98 6 T 122 6 T 146 6 T 170 6 T 188 6' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/190px 10px;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 6 Q 14 1 26 6 T 50 6 T 74 6 T 98 6 T 122 6 T 146 6 T 170 6 T 188 6' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/190px 10px}
+  h2::after{content:""; display:block; width:190px; height:10px; margin-top:2px;
+    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="190" height="10"><path d="M2 6 Q 24 1 48 6 T 94 6 T 140 6 T 188 5" fill="none" stroke="%23b3312c" stroke-width="2.4" stroke-linecap="round"/></svg>') no-repeat}
   .lead{color:var(--mute); font-size:15px; margin:0 0 22px}
   .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
   .stat{padding:14px 16px; margin-bottom:4px}
@@ -72,16 +69,15 @@
   .note{font-size:14.5px; color:var(--mute); margin-top:18px}
   footer{padding:30px 0 60px}
   footer p{padding:14px 18px; font-size:14.5px}
-
-/* общие блоки второй волны сайтов */
+/* общие блоки */
 pre{background:var(--hl);border:2px dashed var(--line);border-radius:12px;
   padding:13px 16px;font:13px/1.6 monospace;overflow:auto}
 ul{padding-left:22px} ol{padding-left:22px} li{margin:8px 0}
 .fact{padding:12px 15px;margin-bottom:4px}
 .fact b{display:block;font-size:21px}
 .fact small{color:var(--mute);font-size:13px;display:block;margin-top:3px}
-.warn{display:inline-block;padding:4px 14px;font-size:13px;color:var(--warn,#a8813c);
-  border:2px dashed var(--warn,#a8813c);
+.warn{display:inline-block;padding:4px 14px;font-size:13px;color:var(--warn);
+  border:2px dashed var(--warn);
   border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
 .flow{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:16px 0}
 .flow .step{padding:11px 13px;text-align:center;font-size:14.5px}
@@ -89,40 +85,21 @@ ul{padding-left:22px} ol{padding-left:22px} li{margin:8px 0}
   border:2px solid var(--ink);background:var(--crayon);vertical-align:middle;animation:blink 2.1s infinite}
 @keyframes blink{0%,45%{opacity:1}55%,100%{opacity:.25}}
 .worm{position:absolute;right:20px;top:52px;width:150px;opacity:.92}
-header.center{text-align:center}
-header.center .ava{width:190px;margin:0 auto 6px}
 footer .sk{display:inline-block;padding:12px 20px}
-@media (prefers-color-scheme:dark){
-  :root{--paper:#171a16;--card:#1f241d;--ink:#e4e6dc;--mute:#9aa192;
-    --hl:#252b22;--line:#39412f}
-}
 
-/* карточки проектов профиля */
-.card{padding:16px 18px}
-.card h3{margin:0 0 6px;font-size:17px}
-.card p{margin:0 0 12px;font-size:14.5px;color:var(--mute)}
-.card img{width:84px;float:right;margin:-6px -6px 4px 8px;border-radius:10px;padding:4px}
-.btn.cool{background:var(--sky)}
-
-/* ---------- волк-беглец, звуки, загрузка ---------- */
-.wolfrun{position:fixed;bottom:4px;left:-150px;width:110px;z-index:60;
-  color:var(--crayon);cursor:pointer;
-  animation:wolfpath 34s linear infinite}
-.wolfrun svg{width:100%;display:block;filter:drop-shadow(2px 3px 0 rgba(67,50,59,.18))}
+/* ---------- beast: волк-беглец, звуки, загрузка; бумага всегда светлая ---------- */
+.wolfrun{position:fixed;bottom:4px;left:-150px;width:104px;z-index:60;
+  color:var(--crayon);cursor:pointer;animation:wolfpath 34s linear infinite}
+.wolfrun img{width:100%;display:block;border-radius:14px;
+  box-shadow:3px 4px 0 rgba(67,50,59,.2)}
 @keyframes wolfpath{
-  0%{left:-150px} 8%{left:14vw} 15%{left:14vw} 16%{transform:scaleX(-1)} 17%{transform:scaleX(1)}
-  38%{left:52vw} 44%{left:52vw} 66%{left:92vw} 72%{left:calc(100vw + 40px)} 100%{left:calc(100vw + 40px)}}
-.wolfrun .wl{transform-box:fill-box;transform-origin:top center;animation:legstep .42s ease-in-out infinite alternate}
-.wolfrun .l2,.wolfrun .l4{animation-delay:.21s}
-@keyframes legstep{from{transform:rotate(13deg)}to{transform:rotate(-13deg)}}
-.wolfrun .wbody{animation:bob .42s ease-in-out infinite alternate}
-.wolfrun .wtail{transform-box:fill-box;transform-origin:bottom left;animation:wag .5s ease-in-out infinite alternate}
-@keyframes bob{from{translate:0 0}to{translate:0 -2px}}
-@keyframes wag{from{transform:rotate(-8deg)}to{transform:rotate(10deg)}}
-.wolfrun.jump svg{animation:jumpy .5s ease-out}
+  0%{left:-150px} 8%{left:14vw} 15%{left:14vw}
+  38%{left:52vw} 44%{left:52vw}
+  66%{left:92vw} 72%{left:calc(100vw + 40px)} 100%{left:calc(100vw + 40px)}}
+.wolfrun.jump img{animation:jumpy .5s ease-out}
 @keyframes jumpy{30%{transform:translateY(-26px) rotate(-6deg)}60%{transform:translateY(0)}80%{transform:translateY(-8px)}}
-.wolfrun.pack1{animation-duration:22s;bottom:52px;width:80px;animation-delay:3s}
-.wolfrun.pack2{animation-duration:29s;bottom:96px;width:64px;animation-delay:7s}
+.wolfrun.pack1{animation-duration:22s;bottom:56px;width:76px;animation-delay:3s}
+.wolfrun.pack2{animation-duration:29s;bottom:104px;width:60px;animation-delay:7s}
 .wiggle{animation:wiggle .45s ease-in-out}
 @keyframes wiggle{25%{transform:rotate(-2.4deg) scale(1.03)}60%{transform:rotate(2deg) scale(1.02)}}
 .sk{transition:transform .18s ease}
@@ -134,12 +111,22 @@ footer .sk{display:inline-block;padding:12px 20px}
   display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;
   transition:opacity .5s ease}
 #loader.done{opacity:0;pointer-events:none}
-#loader .wl-mascot{width:120px;color:var(--crayon);animation:loaderbob .6s ease-in-out infinite alternate}
-#loader .wl-mascot svg{width:100%}
-#loader .wl-mascot .wl{transform-box:fill-box;transform-origin:top center;animation:legstep .3s ease-in-out infinite alternate}
+#loader img{width:110px;border-radius:14px;box-shadow:3px 4px 0 rgba(67,50,59,.2)}
 #loader p{color:var(--mute);font-size:14px;margin:0}
-@keyframes loaderbob{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
+@keyframes loaderbob{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
+#loader img{animation:loaderbob .5s ease-in-out infinite alternate}
 @media (prefers-reduced-motion: reduce){
-  .wolfrun,#loader .wl-mascot,.wiggle{display:none !important;animation:none !important}
-  *{animation-duration:.01ms !important;transition:none !important}
+  .wolfrun{display:none}
+  #loader img{animation:none}
+  .wiggle{animation:none}
+  .sk{transition:none}
 }
+/* центрированная шапка профиля */
+header.center{text-align:center}
+header.center .ava{width:190px;margin:0 auto 8px}
+/* карточки проектов профиля */
+.card{padding:16px 18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0 0 12px;font-size:14.5px;color:var(--mute)}
+.card img{width:84px;float:right;margin:-6px -6px 4px 8px;border-radius:10px;padding:4px}
+.btn.cool{background:var(--sky)}

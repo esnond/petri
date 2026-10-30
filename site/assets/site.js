@@ -1,14 +1,16 @@
-/* site.js: волк-беглец, синтезированные звуки, пасхалки.
-   ноль внешних файлов: звук делает webaudio, волк — inline svg.
-   уважает prefers-reduced-motion: в тихом режиме зверинца нет. */
+/* site.js v2: каштан-беглец из настоящих мелковых кадров, звуки, пасхалки.
+   ноль внешних файлов: звук синтезирует webaudio, кадры — те же jpg, что
+   и в портретах. работает с file://, уважает prefers-reduced-motion. */
 (function () {
   'use strict';
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- звук: файлы не нужны ---------- */
-  var AC = null, muted = localStorage.getItem('esnond-mute') === '1';
+  var AC = null, muted = store('esnond-mute') === '1';
   function ac() {
     if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
+    if (AC && AC.state === 'suspended') { try { AC.resume(); } catch (e) {} }
     return AC;
   }
   function tone(f0, f1, dur, type, vol) {
@@ -18,17 +20,22 @@
     o.type = type || 'triangle';
     o.frequency.setValueAtTime(f0, a.currentTime);
     if (f1) o.frequency.exponentialRampToValueAtTime(f1, a.currentTime + dur / 1000);
-    g.gain.setValueAtTime(vol || 0.04, a.currentTime);
+    g.gain.setValueAtTime(vol, a.currentTime);
     g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur / 1000);
     o.connect(g); g.connect(a.destination);
     o.start(); o.stop(a.currentTime + dur / 1000 + 0.02);
   }
   var sfx = {
-    tick: function () { tone(1500, 1900, 0.045, 'triangle', 0.02); },
-    plop: function () { tone(330, 150, 0.09, 'sine', 0.05); },
-    bark: function () { tone(250, 190, 0.07, 'square', 0.045); setTimeout(function(){ tone(210, 150, 0.09, 'square', 0.045); }, 95); },
-    pop:  function () { tone(620, 940, 0.06, 'triangle', 0.04); }
+    tick: function () { tone(1400, 1800, 0.05, 'triangle', 0.045); },
+    plop: function () { tone(330, 150, 0.1, 'sine', 0.09); },
+    bark: function () { tone(250, 190, 0.07, 'square', 0.07); setTimeout(function(){ tone(210, 150, 0.09, 'square', 0.07); }, 95); },
+    pop:  function () { tone(620, 940, 0.06, 'triangle', 0.06); }
   };
+  /* контекст просыпается от первого жеста: без этого браузеры молчат */
+  ['pointerdown', 'keydown'].forEach(function (ev) {
+    document.addEventListener(ev, function once() { ac(); document.removeEventListener(ev, once); });
+  });
+
   var mb = document.createElement('button');
   mb.className = 'mutebtn'; mb.type = 'button';
   mb.setAttribute('aria-label', 'звук сайта');
@@ -36,14 +43,13 @@
   mb.textContent = muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
   mb.addEventListener('click', function () {
     muted = !muted;
-    localStorage.setItem('esnond-mute', muted ? '1' : '0');
+    store('esnond-mute', muted ? '1' : '0');
     mb.textContent = muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     mb.setAttribute('aria-pressed', muted ? 'true' : 'false');
     if (!muted) sfx.pop();
   });
   document.body.appendChild(mb);
 
-  /* тактильность: тихий тик на карточках, плоп на кнопках */
   Array.prototype.forEach.call(document.querySelectorAll('.sk'), function (el) {
     el.addEventListener('mouseenter', function () { sfx.tick(); });
   });
@@ -51,7 +57,42 @@
     el.addEventListener('click', function () { sfx.plop(); });
   });
 
-  /* оживление портретов: наведение меняет настроение, уход возвращает */
+  /* ---------- каштан: флипбук из настоящих мелковых кадров ---------- */
+  var FRAMES = ['alert', 'excited', 'happy', 'tail', 'pouty', 'smug'];
+  var base = (function () {
+    var probe = document.querySelector('img[src*="/wolf/"]');
+    if (probe) return probe.getAttribute('src').replace(/wolf\/[^/]*$/, 'wolf/');
+    return 'assets/wolf/';
+  })();
+  FRAMES.forEach(function (f) { var i = new Image(); i.src = base + f + '.jpg?v=3'; });
+
+  function flipbook() {
+    var img = document.createElement('img');
+    img.alt = ''; img.src = base + FRAMES[0] + '.jpg?v=3';
+    var k = 0;
+    setInterval(function () {
+      k = (k + 1) % FRAMES.length;
+      img.src = base + FRAMES[k] + '.jpg?v=3';
+    }, 130);
+    return img;
+  }
+
+  function runner(cls) {
+    var d = document.createElement('div');
+    d.className = 'wolfrun ' + (cls || '');
+    d.setAttribute('aria-hidden', 'true');
+    d.title = 'погладить каштана';
+    d.appendChild(flipbook());
+    d.addEventListener('click', function () {
+      sfx.bark();
+      d.classList.remove('jump'); void d.offsetWidth; d.classList.add('jump');
+    });
+    document.body.appendChild(d);
+    return d;
+  }
+  if (!reduce) runner();
+
+  /* оживление портретов: наведение меняет настроение */
   var moods = ['alert','happy','star','cry','angel','sleep','smug','calm','excited','pouty','shocked','ko'];
   Array.prototype.forEach.call(document.querySelectorAll('.ava img, .mascot img'), function (img) {
     var orig = img.getAttribute('src'), busy = false;
@@ -60,7 +101,7 @@
       img.classList.add('wiggle');
       if (orig.indexOf('/wolf/') !== -1) {
         var m = moods[Math.floor(Math.random() * moods.length)];
-        img.setAttribute('src', 'assets/wolf/' + m + '.jpg?v=3');
+        img.setAttribute('src', orig.replace(/wolf\/[^/]*$/, 'wolf/' + m + '.jpg'));
       }
     });
     img.addEventListener('mouseleave', function () {
@@ -71,56 +112,28 @@
     img.addEventListener('click', function () { sfx.bark(); });
   });
 
-  /* ---------- волк-беглец, как жук в claude code ---------- */
-  var WOLF = '<svg viewBox="0 0 120 84" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
-    + '<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">'
-    + '<path class="wbody" d="M14 44 h58 q10 -2 12 -14 q2 -10 12 -8 l14 4 q6 2 4 8 l-6 10 q-4 6 -14 6 h-6 v10 h-8 l-2 -10 h-26 l-2 10 h-8 v-10 q-16 -2 -24 -6 z"/>'
-    + '<path d="M14 44 l-4 10 m8 -10 l-2 10" stroke-width="3.4"/>'
-    + '<path d="M16 52 q4 4 10 2 M16 58 q4 3 9 1" stroke-width="2.6"/>'
-    + '<g class="wl l1"><line x1="36" y1="56" x2="34" y2="78"/></g>'
-    + '<g class="wl l2"><line x1="48" y1="56" x2="50" y2="78"/></g>'
-    + '<g class="wl l3"><line x1="68" y1="56" x2="66" y2="78"/></g>'
-    + '<g class="wl l4"><line x1="80" y1="56" x2="84" y2="78"/></g>'
-    + '<path class="wtail" d="M100 30 q10 -12 6 -22" stroke-width="5.4"/>'
-    + '<circle cx="102" cy="36" r="2.6" fill="currentColor" stroke="none"/></g></svg>';
-
-  var run = document.createElement('div');
-  run.className = 'wolfrun'; run.setAttribute('aria-hidden', 'true');
-  run.title = 'погладить волка';
-  run.innerHTML = WOLF;
-  document.body.appendChild(run);
-  run.addEventListener('click', function () {
-    sfx.bark();
-    run.classList.remove('jump');
-    void run.offsetWidth;
-    run.classList.add('jump');
-  });
-
-  /* пасхалка: наберите "волк" — придёт стая */
+  /* пасхалка: наберите "волк" — придёт стая настоящих каштанов */
   var typed = '';
   document.addEventListener('keydown', function (e) {
-    if (e.key && e.key.length === 1) {
-      typed = (typed + e.key.toLowerCase()).slice(-4);
-      if (typed === 'волк' || typed === 'wolf') {
-        typed = ''; sfx.pop();
-        for (var i = 0; i < 2; i++) {
-          (function (i) {
-            var d = document.createElement('div');
-            d.className = 'wolfrun pack' + i;
-            d.setAttribute('aria-hidden', 'true');
-            d.innerHTML = WOLF;
-            document.body.appendChild(d);
-            setTimeout(function () { d.remove(); }, 9000);
-          })(i);
+    if (!e.key || e.key.length !== 1) return;
+    typed = (typed + e.key.toLowerCase()).slice(-4);
+    if (typed === 'волк' || typed === 'wolf') {
+      typed = ''; sfx.pop();
+      ['pack1', 'pack2'].forEach(function (cls) {
+        if (!reduce) {
+          var d = runner(cls);
+          setTimeout(function () { d.remove(); }, 9000);
         }
-      }
+      });
     }
   });
 
-  /* ---------- загрузка: волк подбегает к сайту ---------- */
+  /* ---------- загрузка: каштан бежит к сайту ---------- */
   var ld = document.createElement('div');
   ld.id = 'loader';
-  ld.innerHTML = '<div class="wl-mascot">' + WOLF + '</div><p>волк бежит за сайтом...</p>';
+  ld.appendChild(flipbook());
+  var lp = document.createElement('p'); lp.textContent = 'каштан бежит к сайту...';
+  ld.appendChild(lp);
   document.body.insertBefore(ld, document.body.firstChild);
   window.addEventListener('load', function () {
     setTimeout(function () {
