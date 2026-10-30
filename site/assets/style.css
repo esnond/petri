@@ -130,3 +130,14 @@ header.center .ava{width:190px;margin:0 auto 8px}
 .card p{margin:0 0 12px;font-size:14.5px;color:var(--mute)}
 .card img{width:84px;float:right;margin:-6px -6px 4px 8px;border-radius:10px;padding:4px}
 .btn.cool{background:var(--sky)}
+
+/* вопросы-ответы: ряд = аватар + пузырь, никаких столбиков */
+.qa .row{display:flex;gap:16px;align-items:flex-start;margin:22px 0}
+.qa .row:nth-child(even){flex-direction:row-reverse}
+.qa .ava{width:88px;flex:none;padding:6px}
+.qa .ava img{display:block;width:100%;border-radius:10px}
+.qa .bubble{flex:1;min-width:0;padding:13px 18px}
+.qa .bubble .q{font-weight:700;color:var(--crayon);font-size:16px;margin:0 0 4px}
+.qa .bubble p{margin:0;font-size:15.5px}
+.qa .row{flex-wrap:nowrap}
+@media (max-width:560px){.qa .row,.qa .row:nth-child(even){flex-direction:column}.qa .ava{width:64px}}

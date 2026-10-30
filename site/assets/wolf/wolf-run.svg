@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 84" width="240" height="168">
+  <style>
+    #wolf{animation:bob .6s ease-in-out infinite}
+    .leg{transform-box:fill-box;transform-origin:50% 0;animation:swing .6s ease-in-out infinite}
+    .b{animation-delay:-.3s}
+    #tail{transform-box:fill-box;transform-origin:100% 100%;animation:wag 1.2s ease-in-out infinite alternate}
+    @keyframes swing{0%,100%{transform:rotate(16deg)}50%{transform:rotate(-16deg)}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.4px)}}
+    @keyframes wag{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+    @media (prefers-reduced-motion:reduce){#wolf,#wolf *{animation:none}}
+  </style>
+  <g id="wolf" fill="none" stroke="#9c2b47" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <path id="tail" d="M28 26 L16 5 L9 21"/>
+    <g opacity=".78">
+      <path class="leg b" stroke-width="5" d="M71 52 L70 64 L69 77"/>
+      <path class="leg a" stroke-width="5" d="M28 52 L27 64 L26 77"/>
+    </g>
+    <path d="M112 36.5 L112 26 L86 26 L80 13 L73 25 L65 14 L58 26 L30 26 C25 27 23 33 25 40 L26 52 L76 53 L86 48 L112 48"/>
+    <path stroke-width="3.2" d="M112 36.5 L107.5 40.5 L102.5 36.5 L97.5 40.5 L92.5 36.5"/>
+    <path stroke-width="3.2" d="M94 48 L99 44.5 L104 48 L109 44.5 L112 48"/>
+    <circle cx="81" cy="35.5" r="3" stroke-width="2.2"/>
+    <g stroke-width="1.8" opacity=".5">
+      <path d="M34 31 L58 31"/>
+      <path d="M92 31 L108 31"/>
+      <path d="M32 58 L62 58"/>
+    </g>
+    <g>
+      <path class="leg a" stroke-width="5" d="M79 51 L80 64 L80 77"/>
+      <path class="leg b" stroke-width="5" d="M35 52 L36 64 L36 77"/>
+    </g>
+  </g>
+</svg>

@@ -1,4 +1,4 @@
-/* site.js v2: каштан-беглец из настоящих мелковых кадров, звуки, пасхалки.
+/* site.js v3: каштан-беглец из настоящих мелковых кадров, звуки, пасхалки.
    ноль внешних файлов: звук синтезирует webaudio, кадры — те же jpg, что
    и в портретах. работает с file://, уважает prefers-reduced-motion. */
 (function () {
@@ -7,7 +7,7 @@
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- звук: файлы не нужны ---------- */
-  var AC = null, muted = store('esnond-mute') === '1';
+  var AC = null, muted = false;
   function ac() {
     if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
     if (AC && AC.state === 'suspended') { try { AC.resume(); } catch (e) {} }
@@ -20,7 +20,7 @@
     o.type = type || 'triangle';
     o.frequency.setValueAtTime(f0, a.currentTime);
     if (f1) o.frequency.exponentialRampToValueAtTime(f1, a.currentTime + dur / 1000);
-    g.gain.setValueAtTime(vol, a.currentTime);
+    g.gain.setValueAtTime(vol * 1.6, a.currentTime);
     g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur / 1000);
     o.connect(g); g.connect(a.destination);
     o.start(); o.stop(a.currentTime + dur / 1000 + 0.02);
@@ -33,7 +33,7 @@
   };
   /* контекст просыпается от первого жеста: без этого браузеры молчат */
   ['pointerdown', 'keydown'].forEach(function (ev) {
-    document.addEventListener(ev, function once() { ac(); document.removeEventListener(ev, once); });
+    document.addEventListener(ev, function once() { ac(); sfx.pop(); document.removeEventListener(ev, once); });
   });
 
   var mb = document.createElement('button');
@@ -43,7 +43,6 @@
   mb.textContent = muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
   mb.addEventListener('click', function () {
     muted = !muted;
-    store('esnond-mute', muted ? '1' : '0');
     mb.textContent = muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     mb.setAttribute('aria-pressed', muted ? 'true' : 'false');
     if (!muted) sfx.pop();
@@ -57,32 +56,22 @@
     el.addEventListener('click', function () { sfx.plop(); });
   });
 
-  /* ---------- каштан: флипбук из настоящих мелковых кадров ---------- */
-  var FRAMES = ['alert', 'excited', 'happy', 'tail', 'pouty', 'smug'];
+  /* ---------- каштан: анимированный svg субагента, прозрачный фон ---------- */
   var base = (function () {
     var probe = document.querySelector('img[src*="/wolf/"]');
     if (probe) return probe.getAttribute('src').replace(/wolf\/[^/]*$/, 'wolf/');
     return 'assets/wolf/';
   })();
-  FRAMES.forEach(function (f) { var i = new Image(); i.src = base + f + '.jpg?v=3'; });
-
-  function flipbook() {
-    var img = document.createElement('img');
-    img.alt = ''; img.src = base + FRAMES[0] + '.jpg?v=3';
-    var k = 0;
-    setInterval(function () {
-      k = (k + 1) % FRAMES.length;
-      img.src = base + FRAMES[k] + '.jpg?v=3';
-    }, 130);
-    return img;
-  }
+  var RUNSVG = base + 'wolf-run.svg?v=1';
 
   function runner(cls) {
     var d = document.createElement('div');
     d.className = 'wolfrun ' + (cls || '');
     d.setAttribute('aria-hidden', 'true');
     d.title = 'погладить каштана';
-    d.appendChild(flipbook());
+    var img = document.createElement('img');
+    img.alt = ''; img.src = RUNSVG;
+    d.appendChild(img);
     d.addEventListener('click', function () {
       sfx.bark();
       d.classList.remove('jump'); void d.offsetWidth; d.classList.add('jump');
@@ -131,7 +120,8 @@
   /* ---------- загрузка: каштан бежит к сайту ---------- */
   var ld = document.createElement('div');
   ld.id = 'loader';
-  ld.appendChild(flipbook());
+  var limg = document.createElement('img'); limg.src = RUNSVG; limg.alt = '';
+  ld.appendChild(limg);
   var lp = document.createElement('p'); lp.textContent = 'каштан бежит к сайту...';
   ld.appendChild(lp);
   document.body.insertBefore(ld, document.body.firstChild);
