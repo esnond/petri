@@ -87,40 +87,6 @@ ul{padding-left:22px} ol{padding-left:22px} li{margin:8px 0}
 .worm{position:absolute;right:20px;top:52px;width:150px;opacity:.92}
 footer .sk{display:inline-block;padding:12px 20px}
 
-/* ---------- beast: волк-беглец, звуки, загрузка; бумага всегда светлая ---------- */
-.wolfrun{position:fixed;bottom:4px;left:-150px;width:104px;z-index:60;
-  color:var(--crayon);cursor:pointer;animation:wolfpath 34s linear infinite}
-.wolfrun img{width:100%;display:block;border-radius:14px;
-  box-shadow:3px 4px 0 rgba(67,50,59,.2)}
-@keyframes wolfpath{
-  0%{left:-150px} 8%{left:14vw} 15%{left:14vw}
-  38%{left:52vw} 44%{left:52vw}
-  66%{left:92vw} 72%{left:calc(100vw + 40px)} 100%{left:calc(100vw + 40px)}}
-.wolfrun.jump img{animation:jumpy .5s ease-out}
-@keyframes jumpy{30%{transform:translateY(-26px) rotate(-6deg)}60%{transform:translateY(0)}80%{transform:translateY(-8px)}}
-.wolfrun.pack1{animation-duration:22s;bottom:56px;width:76px;animation-delay:3s}
-.wolfrun.pack2{animation-duration:29s;bottom:104px;width:60px;animation-delay:7s}
-.wiggle{animation:wiggle .45s ease-in-out}
-@keyframes wiggle{25%{transform:rotate(-2.4deg) scale(1.03)}60%{transform:rotate(2deg) scale(1.02)}}
-.sk{transition:transform .18s ease}
-.sk:hover{transform:translateY(-2px) rotate(.2deg)}
-.mutebtn{position:fixed;top:10px;right:10px;z-index:70;width:40px;height:40px;
-  border:2px solid var(--ink);background:var(--card);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
-  cursor:pointer;font-size:17px;box-shadow:2px 3px 0 rgba(67,50,59,.14)}
-#loader{position:fixed;inset:0;z-index:99;background:var(--paper);
-  display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;
-  transition:opacity .5s ease}
-#loader.done{opacity:0;pointer-events:none}
-#loader img{width:110px;border-radius:14px;box-shadow:3px 4px 0 rgba(67,50,59,.2)}
-#loader p{color:var(--mute);font-size:14px;margin:0}
-@keyframes loaderbob{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
-#loader img{animation:loaderbob .5s ease-in-out infinite alternate}
-@media (prefers-reduced-motion: reduce){
-  .wolfrun{display:none}
-  #loader img{animation:none}
-  .wiggle{animation:none}
-  .sk{transition:none}
-}
 /* центрированная шапка профиля */
 header.center{text-align:center}
 header.center .ava{width:190px;margin:0 auto 8px}
