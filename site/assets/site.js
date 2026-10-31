@@ -1,34 +1,22 @@
-/* site.js v4: звуки, кнопка звука, оживление портретов. без зверинца:
-   бегущего svg волка и загрузчик снял владелец. */
+/* site.js v5: настоящие звуки (wav), появление секций при прокрутке,
+   оживление портретов. без зверинца. */
 (function () {
   'use strict';
-  var AC = null, muted = false;
-  function ac() {
-    if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} }
-    if (AC && AC.state === 'suspended') { try { AC.resume(); } catch (e) {} }
-    return AC;
-  }
-  function tone(f0, f1, dur, type, vol) {
+  var muted = false;
+  function play(name, vol) {
     if (muted) return;
-    var a = ac(); if (!a) return;
-    var o = a.createOscillator(), g = a.createGain();
-    o.type = type || 'triangle';
-    o.frequency.setValueAtTime(f0, a.currentTime);
-    if (f1) o.frequency.exponentialRampToValueAtTime(f1, a.currentTime + dur / 1000);
-    g.gain.setValueAtTime(vol * 1.6, a.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime + dur / 1000);
-    o.connect(g); g.connect(a.destination);
-    o.start(); o.stop(a.currentTime + dur / 1000 + 0.02);
+    try {
+      var a = new Audio('assets/snd/' + name + '.wav?v=1');
+      a.volume = vol || 0.45;
+      var p = a.play();
+      if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
   }
   var sfx = {
-    tick: function () { tone(1400, 1800, 0.05, 'triangle', 0.045); },
-    plop: function () { tone(330, 150, 0.1, 'sine', 0.09); },
-    bark: function () { tone(250, 190, 0.07, 'square', 0.07); setTimeout(function(){ tone(210, 150, 0.09, 'square', 0.07); }, 95); },
-    pop:  function () { tone(620, 940, 0.06, 'triangle', 0.06); }
+    tick: function () { play('tick', 0.3); },
+    plop: function () { play('plop', 0.5); },
+    bark: function () { play('bark', 0.55); }
   };
-  ['pointerdown', 'keydown'].forEach(function (ev) {
-    document.addEventListener(ev, function once() { ac(); sfx.pop(); document.removeEventListener(ev, once); });
-  });
 
   var mb = document.createElement('button');
   mb.className = 'mutebtn'; mb.type = 'button';
@@ -39,7 +27,7 @@
     muted = !muted;
     mb.textContent = muted ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     mb.setAttribute('aria-pressed', muted ? 'true' : 'false');
-    if (!muted) sfx.pop();
+    if (!muted) sfx.plop();
   });
   document.body.appendChild(mb);
 
@@ -68,4 +56,17 @@
     });
     img.addEventListener('click', function () { sfx.bark(); });
   });
+
+  /* появление: секции и карточки мягко всплывают при прокрутке */
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.sk, section h2, .wrap > p');
+  if (!reduce && 'IntersectionObserver' in window) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+  }
 })();
