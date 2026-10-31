@@ -47,7 +47,7 @@ static const float OCT_TAU_S      = 5.0f;    /* octopamine kinetics, s */
 static const float DOP_TAU_S      = 2.5f;    /* dopamine kinetics, s */
 static const float MOD_TAU_SCALE_SER = 0.6f; /* ser slows interneuron tau by up to this fraction */
 static const float MOD_TAU_SCALE_OCT = 0.3f;
-static const float NMJ_GAIN        = 0.8f;
+static const float NMJ_GAIN        = 0.9f;
 static const float NMJ_GAIN_SER   = 1.6f;  /* serotonin nmj suppression, per unit mod */
 static const float NMJ_GAIN_OCT   = 1.0f;  /* octopamine nmj potentiation, per unit mod */
 static const float DA_G_MECH_SCALE = 0.5f;   /* da shunts mechanosensory synapses */
@@ -56,14 +56,14 @@ static const float DA_G_MECH_SCALE = 0.5f;   /* da shunts mechanosensory synapse
 static const float BODY_LEN_MM    = 1.0f;    /* adult hermaphrodite, mm */
 static const float K_MAX_INV_MM   = 12.0f;   /* max curvature, 1/mm, cuticle limit */
 static const float TAU_BEND_MS     = 220.0f;  /* cuticle viscoelastic relaxation, ms, approx raised from 110 to slow the loop into the target period */
-static const float BEND_GAIN       = 8.0f;
+static const float BEND_GAIN       = 7.5f;
 static const float BOUNDARY_DAMP  = 1.5f;
 static const int   BOUNDARY_SEG   = 3;
-static const float DRAG_T          = 0.032f;  /* tangential drag per segment, uN*s/mm */
+static const float DRAG_T          = 0.021f;  /* tangential drag per segment, uN*s/mm */
 static const float DRAG_RATIO     = 20.0f;
-static const float PROP_GAIN       = 25.0f;
+static const float PROP_GAIN       = 36.0f;
 static const int   PROP_LAG_SEG   = 4;       /* segments of spatial phase lag */
-static const float PROP_TAU_MS     = 350.0f;
+static const float PROP_TAU_MS     = 600.0f;
 static const float PROP_SELF_W    = 1.0f;    /* own segment bend weight, relaxation oscillator */
 static const float PROP_BACK_W    = 1.2f;
 static const float MN_CHAIN_GAP_W = 0.5f;    /* electrotonic chain weight along one motor class */
@@ -85,7 +85,7 @@ static const float CHEMO_G           = 3.0f; /* peak receptor conductance */
 static const float CHEMO_DERIV_W     = 2.0f; /* weight of dc/dt versus offset component */
 static const float THERMO_TAU_ADAPT_S = 8.0f;
 static const float THERMO_G           = 2.5f; /* per degree c */
-static const float MEC_G            = 10.0f;
+static const float MEC_G            = 0.0f;
 static const float MEC_TAU_MS         = 800.0f; /* mechanoreceptor relaxation, ms */
 static const float ASH_TAU_MS         = 2500.0f;
 /* spike frequency adaptation: calcium activated potassium current,
@@ -100,7 +100,7 @@ static const float ADAPT_GAIN_MV   = 9.0f;  /* mv of adaptation per unit activit
    wen 2012 shows b neurons are stretch sensitive. gain in mv per
    unit curvature */
 static const float CMD_PROP_GAIN   = 20.0f;
-static const float AVB_MOTOR_FLOOR = 0.3f; /* avb gates nmj output, 0 means ablation silences the muscles */
+static const float AVB_MOTOR_FLOOR = 1.0f; /* avb gates nmj output, 0 means ablation silences the muscles */
 static const float AVB_SLOW_TAU_MS = 5000.0f; /* avb command smoothing, decouples the gain from the fast gait */
 /* optogenetics, cheta and nphr kinetics after chen 2011 / zhang 2007:
    cheta activation 1.5 ms, deactivation 10 ms; nphr shunt gain in
