@@ -198,3 +198,26 @@ proportionally, drag moves speed inversely) reclassifies most of the
 scan as first order; true fragility remains only where the measured
 change exceeds the linear prediction by more than 50 percent.
 falsification: more than half the perturbations stay above the bar.
+
+## wave structure finding, 2026-10-30, mid campaign
+
+h-m3 FALSIFIED and upgraded to a structural finding. the head tail
+lag metric does not degenerate from a broken probe: the debug build
+profile (t 118000 to 119250, seed 1) shows the whole body flipping
+curvature sign in unison, a global standing mode with period about
+1 to 1.5 s and no traveling wave. the v1.0.1 gait traveled
+(wavelength 0.84 body lengths); the v1.2 recalibration replaced it.
+the battery metrics do not distinguish standing from traveling, so
+the regression passed silently. the two point correlation reads 0.95
+in phase at 0.5 mm separation on every seed tested.
+
+h-m3b wave restoration: the traveling wave lives where the backward
+proprioceptive coupling dominates the local reflex. sweep
+prop_back_weight up and prop_self_weight down around the v1.2 base,
+gate on both the battery ranges and a nonzero head to tail lag
+(wavelength above 0.3 body lengths, computed as wave speed times
+period, correcting the units bug in the old metric which divided).
+falsification: no point in the sweep keeps the battery inside the
+targets with a traveling wave, in which case the standing mode is the
+honest v1.2 phenotype and the wave restoration becomes the v1.3
+structural program.
