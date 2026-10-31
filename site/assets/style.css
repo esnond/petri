@@ -32,15 +32,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-body{font-family:'Neucha','Segoe Print','Comic Sans MS',cursive;
-  font-size:17.5px;line-height:1.8}
-h1,h2,h3,.stat b,.fact b,.bubble .q,.ver h3,.card h3{
-  font-family:'Caveat','Segoe Print',cursive;font-weight:700}
-h1{font-size:clamp(36px,6vw,56px)}
-h2{font-size:30px}
-/* появление при прокрутке */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
-.reveal.on{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
 /* единый стиль семейства esnond: бумага, волнистые границы, мелковые акценты.
    акцент сайта задаётся :root в самой странице; правила живут здесь */
@@ -184,3 +175,17 @@ ul li::before{content:"";position:absolute;left:2px;top:.72em;width:13px;height:
   background:var(--crayon);border-radius:3px;transform:rotate(-5deg);opacity:.75}
 /* текст не идеально ровный: лёгкое дыхание строк */
 p{letter-spacing:.1px}
+body{font-family:'Neucha','Segoe Print','Comic Sans MS',cursive;
+  font-size:17.5px;line-height:1.8}
+h1,h2,h3,.stat b,.fact b,.bubble .q,.ver h3,.card h3{
+  font-family:'Caveat','Segoe Print',cursive;font-weight:700}
+h1{font-size:clamp(36px,6vw,56px)}
+h2{font-size:30px}
+/* появление при прокрутке */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* флагманская печать */
+.flagchip{display:inline-block;padding:3px 14px;font-size:13px;color:var(--paper);
+  background:var(--crayon);border:2px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;
+  transform:rotate(-2deg);box-shadow:2px 2px 0 rgba(67,50,59,.15)}
