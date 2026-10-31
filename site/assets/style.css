@@ -151,3 +151,36 @@ header.center .ava{width:190px;margin:0 auto 8px}
 .qa .bubble p{margin:0;font-size:15.5px}
 .qa .row{flex-wrap:nowrap}
 @media (max-width:560px){.qa .row,.qa .row:nth-child(even){flex-direction:column}.qa .ava{width:64px}}
+
+/* ---------- нарочито неидеально: тот же мелок, что и каштан ---------- */
+/* у каждой карточки свой завал рамки, кроме тех, что повёрнуты классом */
+.sk:not(.rot-l):not(.rot-r):nth-child(3n){border-radius:19px 225px 17px 255px/255px 19px 225px 18px;transform:rotate(.35deg)}
+.sk:not(.rot-l):not(.rot-r):nth-child(3n+1){border-radius:255px 17px 225px 19px/18px 255px 19px 225px}
+.sk:not(.rot-l):not(.rot-r):nth-child(5n){transform:rotate(-.45deg)}
+/* бумажный скотч на больших карточках */
+.card,.ver{position:relative}
+.card::before,.ver::before{content:"";position:absolute;top:-10px;left:50%;width:76px;height:19px;
+  margin-left:-38px;background:rgba(233,222,178,.6);border:1px solid rgba(67,50,59,.14);
+  transform:rotate(-2.2deg);border-radius:3px}
+/* мелковый маркер за цифрами */
+.stat b,.fact b{display:inline-block;
+  background:linear-gradient(104deg,transparent 2%,var(--hl) 7%,var(--hl) 91%,transparent 96%);
+  border-radius:8px;padding:0 9px;margin-left:-9px}
+/* рукописный разделитель между секциями */
+section::after{content:"";display:block;width:min(70%,420px);height:9px;margin:10px auto -6px;
+  background:var(--crayon);opacity:.16;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 5 Q 22 9 42 5 T 82 5 T 122 5 T 162 5 T 188 6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='10' viewBox='0 0 190 10'%3E%3Cpath d='M2 5 Q 22 9 42 5 T 82 5 T 122 5 T 162 5 T 188 6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain}
+/* кнопки нажимаются как нарисованные */
+.btn{box-shadow:2px 2px 0 var(--ink);transition:transform .1s ease,box-shadow .1s ease}
+.btn:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+/* чипы слегка вкривь, каждый по-своему */
+.chip:nth-child(odd){transform:rotate(-1.1deg)}
+.chip:nth-child(even){transform:rotate(.9deg)}
+/* маркеры списков: мелковые чёрточки */
+ul{list-style:none;padding-left:4px}
+ul li{position:relative;padding-left:22px}
+ul li::before{content:"";position:absolute;left:2px;top:.72em;width:13px;height:3.5px;
+  background:var(--crayon);border-radius:3px;transform:rotate(-5deg);opacity:.75}
+/* текст не идеально ровный: лёгкое дыхание строк */
+p{letter-spacing:.1px}
