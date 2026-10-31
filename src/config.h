@@ -57,15 +57,15 @@ static const float BODY_LEN_MM    = 1.0f;    /* adult hermaphrodite, mm */
 static const float K_MAX_INV_MM   = 12.0f;   /* max curvature, 1/mm, cuticle limit */
 static const float TAU_BEND_MS     = 220.0f;  /* cuticle viscoelastic relaxation, ms, approx raised from 110 to slow the loop into the target period */
 static const float BEND_GAIN       = 8.0f;
-static const float BOUNDARY_DAMP  = 3.0f;
+static const float BOUNDARY_DAMP  = 1.5f;
 static const int   BOUNDARY_SEG   = 3;
 static const float DRAG_T          = 0.032f;  /* tangential drag per segment, uN*s/mm */
 static const float DRAG_RATIO     = 20.0f;
-static const float PROP_GAIN       = 25.0f;
-static const int   PROP_LAG_SEG   = 6;       /* segments of spatial phase lag */
-static const float PROP_TAU_MS     = 350.0f;
+static const float PROP_GAIN       = 36.0f;
+static const int   PROP_LAG_SEG   = 4;       /* segments of spatial phase lag */
+static const float PROP_TAU_MS     = 600.0f;
 static const float PROP_SELF_W    = 1.0f;    /* own segment bend weight, relaxation oscillator */
-static const float PROP_BACK_W    = 2.0f;
+static const float PROP_BACK_W    = 1.2f;
 static const float MN_CHAIN_GAP_W = 0.5f;    /* electrotonic chain weight along one motor class */
 
 /* endogenous activity of the command circuit, mv of standing bias current.
