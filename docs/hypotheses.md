@@ -141,3 +141,60 @@ does not drive the wave, avb ablation does not kill the rhythm, and
 the only apparent temporal signature traces to a model input. the
 gait is motor autonomous and the command layer gates it. this is the
 standing conclusion of the v1.2 experiment.
+
+## campaign hypotheses, registered 2026-10-30 before any code change
+
+h-m1 extractor: fixing the p-006 extractor (metric is bend frequency
+from the deadband crossings of the ava cut arm against its control)
+yields a scorable verdict. falsification: the value still has no
+usable control arm.
+
+h-m2 reversal metric: counting only episodes with at least 0.1 mm net
+backward displacement removes the wall slide artifacts and lowers the
+varshney reversal count toward the literature order (units per
+minute). falsification: the count stays above 20 per 300 s.
+
+h-m3 wavelength: the head to tail lag metric degenerates at v1.2
+because the probe separation assumed the v1.0.1 wave. recomputing the
+lag at the v1.2 wavelength (0.6 to 0.9 body length) restores nonzero
+wavelengths. falsification: still 0.00 on every connectome.
+
+h-m4 exocytosis: mapping unc-13, unc-18, unc-64, unc-10 to half
+effective transmission at the neuromuscular junction (coarse richmond
+1999) slows the crawl to at most 0.8 of wild type. falsification:
+ratio stays above 0.9.
+
+h-m5 achr: unc-29, unc-38, unc-63 are nicotinic receptor subunits on
+the body wall muscle (lewis 1980, levamisole receptor), so the honest
+lever is half muscle response (nmj gain scale 0.5), not half motor
+output weights. prediction: the arms slow to 0.5 to 0.8, direction
+match. falsification: they speed up or sit at 1.0.
+
+h-m6 p-005: the no food speedup dies because the avb motor gate
+absorbs the serotonin gain change. test: log serotonin and the gate
+along a food and no food pair; if the gate term moves opposite to the
+serotonin term by the same fraction, the hypothesis holds and the fix
+is to let serotonin act on the gate as well. falsification: serotonin
+is flat or the gate does not move.
+
+h-m7 smooth touch: replacing the step touch drive with receptor
+kinetics (rise under press, decay after) widens the escape basin:
+s5 perimeter drops below 0.30 and the mec_g transition softens.
+falsification: s5 stays at or above 0.31 or the battery amplitude
+falls under 2.0.
+
+h-m8 habituation protocol: at 10 s inter tap interval (inside the
+stsp recovery range) the per tap response declines across the train
+on most of ten seeds. falsification: flat or rising again.
+
+h-m9 population signature: the v1.2 neural state space has a low
+dimensional rotating trajectory with a participation ratio near the
+kato 2015 four dimensions. falsification: the participation ratio
+exceeds 10 or the trajectory does not rotate.
+
+h-m10 robustness criterion: scoring each constant against its
+predicted first order response (time scales move the period
+proportionally, drag moves speed inversely) reclassifies most of the
+scan as first order; true fragility remains only where the measured
+change exceeds the linear prediction by more than 50 percent.
+falsification: more than half the perturbations stay above the bar.
